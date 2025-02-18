@@ -20,9 +20,9 @@ cp .env.example .env
 php artisan key:generate
 ```
 
-4. Rodar as migrations
+4. Rodar as migrations e seeders
 ```bash
-php artisan migrate
+php artisan migrate --seed
 ```
 
 5. Buildar arquivos estáticos
