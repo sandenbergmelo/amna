@@ -22,6 +22,10 @@ class UserController
      */
     public function create()
     {
+        if (Auth::check()) {
+            return redirect()->route('profile.index');
+        }
+
         return view('auth.register');
     }
 
@@ -45,7 +49,17 @@ class UserController
 
         User::create($request->all());
 
-        return redirect()->route('login');
+        // Authenticate the user
+        $credentials = $request->only('email', 'password');
+        $authenticated = Auth::attempt($credentials);
+
+        if (!$authenticated) {
+            return redirect()->route('login')->withErrors([
+                'error' => 'Email ou senha inválidos',
+            ]);
+        }
+
+        return redirect()->route('profile.index')->with('success', 'Login efetuado com sucesso');
     }
 
     /**
