@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,20 +17,8 @@ class LoginController
         return view('auth.login');
     }
 
-    public function store(Request $request)
+    public function store(LoginRequest $request)
     {
-        $PASSWORD_MIN_LENGTH = 8;
-
-        $request->validate([
-            'email' => 'required|email',
-            'password' => "required|min:$PASSWORD_MIN_LENGTH",
-        ], [
-            'email.required' => 'Email é obrigatório',
-            'email.email' => 'Email inválido',
-            'password.required' => 'Senha é obrigatória',
-            'password.min' => "Senha deve ter no mínimo $PASSWORD_MIN_LENGTH caracteres",
-        ]);
-
         $credentials = $request->only('email', 'password');
 
         $authenticated = Auth::attempt($credentials);
