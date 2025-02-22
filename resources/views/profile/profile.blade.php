@@ -12,18 +12,14 @@
     <a href="{{ route('home') }}">Home</a>
     <h2>Perfil</h2>
 
-    @if (session('success'))
+    {{-- @if (session('success'))
         <span>{{ session('success') }}</span>
-    @endif
+    @endif --}}
 
-    @if (auth()->check())
-        <img src="{{ asset(auth()->user()->profile_photo_path) }}" width="200" height="200" alt="Foto de perfil">
-        <br>
-        <span>Logado como "{{ auth()->user()->name }}"</span>
-        <a href="{{ route('logout') }}">Logout</a>
-    @else
-        <span>Você não está logado</span>
-    @endif
+    <img src="{{ asset($user->profile_photo_path) }}" width="200" height="200" alt="Foto de perfil">
+    <br>
+    <span>Logado como "{{ $user->name }}"</span>
+    <a href="{{ route('logout') }}">Logout</a>
 </body>
 
 </html>

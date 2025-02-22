@@ -9,6 +9,10 @@ class LoginController
 {
     public function index()
     {
+        if (Auth::check()) {
+            return redirect()->route('profile.index');
+        }
+
         return view('auth.login');
     }
 

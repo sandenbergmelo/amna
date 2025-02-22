@@ -16,31 +16,26 @@
         <span>{{ session('success') }}</span>
     @endif
 
-    @if (auth()->check())
-        Já está logado como {{ auth()->user()->name }}
-        <a href="{{ route('logout') }}">Logout</a>
-    @else
-        @error('error')
-            <span>{{ $message }}</span>
-        @enderror
+    @error('error')
+        <span>{{ $message }}</span>
+    @enderror
 
-        @error('email')
-            <span>{{ $message }}</span>
-        @enderror
+    @error('email')
+        <span>{{ $message }}</span>
+    @enderror
 
-        @error('password')
-            <span>{{ $message }}</span>
-        @enderror
+    @error('password')
+        <span>{{ $message }}</span>
+    @enderror
 
-        <form action="{{ route('login.store') }}" method="POST">
-            @csrf
-            <label for="email">Email</label>
-            <input type="email" name="email" id="email">
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password">
-            <button type="submit">Login</button>
-        </form>
-    @endif
+    <form action="{{ route('login.store') }}" method="POST">
+        @csrf
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email">
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password">
+        <button type="submit">Login</button>
+    </form>
 </body>
 
 </html>
