@@ -9,7 +9,7 @@ class LoginController
 {
     public function index()
     {
-        return view('login');
+        return view('auth.login');
     }
 
     public function store(Request $request)
@@ -36,7 +36,7 @@ class LoginController
             ]);
         }
 
-        return redirect()->route('perfil.index')->with('success', 'Login efetuado com sucesso');
+        return redirect()->route('profile.index')->with('success', 'Login efetuado com sucesso');
     }
 
     public function destroy(Request $request)
