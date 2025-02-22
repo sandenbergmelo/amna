@@ -12,11 +12,7 @@
     <a href="{{ route('home') }}">Home</a>
     <h2>Login</h2>
 
-    @if (session('success'))
-        <span>{{ session('success') }}</span>
-    @endif
-
-    @error('error')
+    @error('name')
         <span>{{ $message }}</span>
     @enderror
 
@@ -25,6 +21,10 @@
     @enderror
 
     @error('password')
+        <span>{{ $message }}</span>
+    @enderror
+
+    @error('profile_photo')
         <span>{{ $message }}</span>
     @enderror
 
