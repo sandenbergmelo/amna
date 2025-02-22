@@ -31,7 +31,7 @@ class LoginController
         $authenticated = Auth::attempt($credentials);
 
         if (!$authenticated) {
-            return redirect()->route('login.index')->withErrors([
+            return redirect()->route('login')->withErrors([
                 'error' => 'Email ou senha inválidos',
             ]);
         }
@@ -42,6 +42,6 @@ class LoginController
     public function destroy(Request $request)
     {
         Auth::logout();
-        return redirect()->route('login.index')->with('success', 'Logout efetuado com sucesso');
+        return redirect()->route('login')->with('success', 'Logout efetuado com sucesso');
     }
 }

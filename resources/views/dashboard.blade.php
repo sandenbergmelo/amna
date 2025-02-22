@@ -18,7 +18,7 @@
 
     @if (auth()->check())
         <span>Logado como "{{ auth()->user()->name }}"</span>
-        <a href="{{ route('login.destroy') }}">Logout</a>
+        <a href="{{ route('logout') }}">Logout</a>
     @else
         <span>Você não está logado</span>
     @endif

@@ -9,9 +9,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::controller(LoginController::class)->group(function () {
-    Route::get('/login', 'index')->name('login.index');
+    Route::get('/login', 'index')->name('login');
     Route::post('/login', 'store')->name('login.store');
-    Route::get('/logout', 'destroy')->name('login.destroy');
+    Route::get('/logout', 'destroy')->name('logout');
 });
 
-Route::get('/perfil', [DashBoardController::class, 'index'])->name('perfil.index');
+Route::get('/perfil', [DashBoardController::class, 'index'])
+    ->name('perfil.index')
+    ->middleware('auth');

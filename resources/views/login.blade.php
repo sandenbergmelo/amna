@@ -18,7 +18,7 @@
 
     @if (auth()->check())
         Já está logado como {{ auth()->user()->name }}
-        <a href="{{ route('login.destroy') }}">Logout</a>
+        <a href="{{ route('logout') }}">Logout</a>
     @else
         @error('error')
             <span>{{ $message }}</span>
