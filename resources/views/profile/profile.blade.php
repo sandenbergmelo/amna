@@ -10,7 +10,10 @@
 
 <body>
     <a href="{{ route('home') }}">Home</a>
-    <h2>Perfil</h2>
+    <h2>Perfil</h2>~
+    @session('success')
+        <span>{{ session('success') }}</span>
+    @endsession
 
     <img src="{{ asset($user->profile_photo_path) }}" width="200" height="200" alt="Foto de perfil">
     <br>
