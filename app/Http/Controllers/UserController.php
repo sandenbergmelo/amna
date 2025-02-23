@@ -110,6 +110,54 @@ class UserController
     }
 
     /**
+     * Update the user profile photo.
+     */
+    public function updatePhoto(Request $request, User $user)
+    {
+        $request->validate([
+            'profile_photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+        ], [
+            'profile_photo.required' => 'Selecione uma imagem',
+            'profile_photo.image' => 'O arquivo selecionado não é uma imagem',
+            'profile_photo.mimes' => 'A imagem deve ser do tipo jpeg, png ou jpg',
+            'profile_photo.max' => 'A imagem não pode ter mais de 2MB',
+        ]);
+
+        $authenticatedUser = Auth::user();
+
+        // Check if the authenticated user is the same as the user being updated
+        if ($authenticatedUser->id !== $user->id) {
+            return redirect()->route('profile.index')->withErrors([
+                'error' => 'Você não tem permissão para editar este usuário',
+            ]);
+        }
+
+        $profile_photo = $request->file('profile_photo');
+        $photo_file_name = date('YmdHisu')
+            . '-'
+            . str_replace(' ', '-', $user->name)
+            . '.'
+            . $profile_photo->extension();
+
+        $profile_photo->storeAs('profile_photos', $photo_file_name, 'public');
+
+        $user->update([
+            'profile_photo_path' => 'storage/profile_photos/' . $photo_file_name,
+        ]);
+
+        // Remove the old profile photo
+        $old_profile_photo = $authenticatedUser->profile_photo_path;
+        if ($old_profile_photo && $old_profile_photo !== 'storage/profile_photos/default.png') {
+            $old_profile_photo_path = public_path($old_profile_photo);
+            if (file_exists($old_profile_photo_path)) {
+                unlink($old_profile_photo_path);
+            }
+        }
+
+        return redirect()->route('profile.index')->with('success', 'Foto de perfil atualizada com sucesso');
+    }
+
+    /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)

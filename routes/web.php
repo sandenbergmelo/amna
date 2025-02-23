@@ -26,5 +26,10 @@ Route::get('/profile/edit', [UserController::class, 'edit'])
     ->name('profile.edit')
     ->middleware('auth');
 
+// Route to update profile photo
+Route::patch('/profile/update-photo/{user}', [UserController::class, 'updatePhoto'])
+    ->name('profile.update-photo')
+    ->middleware('auth');
+
 Route::get('/register', [UserController::class, 'create'])
     ->name('register');
