@@ -42,6 +42,6 @@ class LoginController
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->intended('login')->with('success', 'Logout efetuado com sucesso');
+        return redirect()->route('home')->with('success', 'Logout efetuado com sucesso');
     }
 }
