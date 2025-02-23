@@ -52,18 +52,6 @@
             background-color: #0056b3;
         }
 
-        a {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            text-decoration: none;
-            color: #007bff;
-        }
-
-        a:hover {
-            text-decoration: underline;
-        }
-
         span {
             color: red;
         }
