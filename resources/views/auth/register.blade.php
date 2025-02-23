@@ -12,7 +12,7 @@
 </head>
 
 <body class="w-full h-full flex justify-center items-center flex-col">
-    <main class="lg:w-amna-app md:w-amna-app-content-mdmin-h-[50rem] text-black flex justify-start items-center flex-col md:justify-center mt-4 md:mt-0">
+    <main class="lg:w-amna-app md:w-amna-app-content-md min-h-[50rem] text-black flex justify-start items-center flex-col md:justify-center mt-4 md:mt-0">
         <div class="py-4 w-full md:w-[25rem] md:shadow-2xl rounded-md transition-all duration-200">
             <div class="h-full w-full">
                 <div>
@@ -30,7 +30,7 @@
                         @csrf
                         <div class="w-full py-2">
                             <label for="profile_photo">Imagem de perfil</label>
-                            <input class="text-black text-center font-semibold py-2 transition duration-300" type="file" name="profile_photo" id="profile_photo" accept="image/*" required>
+                            <input class="text-black text-center font-semibold py-2 transition duration-300 cursor-pointer" type="file" name="profile_photo" id="profile_photo" accept="image/*" required>
                         </div>
                         <div class="w-full py-2">
                             <label for="name">Nome</label>
@@ -49,7 +49,7 @@
                             <input class="bg-white py-2 px-4 w-full border border-black rounded" type="password" name="password_again" id="password_again" placeholder="Sua senha novamente" minlength="8" required>
                         </div>
                         <div class="w-full flex justify-start flex-col">
-                            <input class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300" type="submit" value="Cadastrar">
+                            <input class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer" type="submit" value="Cadastrar">
                         </div>
                         <div class="text-red-600">
                             @error('name')

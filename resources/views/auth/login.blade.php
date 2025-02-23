@@ -38,10 +38,10 @@
                         </div>
                         <div class="flex items-center space-x-2">
                             <label for="remember" class="text-gray-700 text-sm font-medium">Lembrar-se de mim</label>
-                            <input type="checkbox" name="remember" id="remember" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2">
+                            <input type="checkbox" name="remember" id="remember" class="w-5 h-5 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 focus:ring-2 cursor-pointer">
                         </div>
                         <div class="w-full flex justify-start flex-col">
-                            <input class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300" type="submit" value="Entrar">
+                            <input class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer" type="submit" value="Entrar">
                         </div>
                         <div class="text-red-600">
                             @error('name')
