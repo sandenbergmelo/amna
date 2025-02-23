@@ -39,19 +39,11 @@ class UserController
         $profile_photo_path = 'storage/profile_photos/' . $photo_file_name;
         $request['profile_photo_path'] = $profile_photo_path;
 
-        User::create($request->all());
+        $user = User::create($request->all());
 
         // Authenticate the user
-        $credentials = $request->only('email', 'password');
-        $authenticated = Auth::attempt($credentials);
-
-        if (!$authenticated) {
-            return redirect()->route('login')->withErrors([
-                'error' => 'Email ou senha inválidos',
-            ]);
-        }
-
-        return redirect()->route('profile.index')->with('success', 'Login efetuado com sucesso');
+        Auth::login($user);
+        return redirect()->route('profile.index')->with('success', 'Registro efetuado com sucesso');
     }
 
     /**

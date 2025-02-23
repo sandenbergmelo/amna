@@ -26,9 +26,14 @@
         @endsession
 
         <br>
-        <a href="{{ route('register') }}">Register</a>
-        <a href="{{ route('login') }}">Login</a>
-        <a href="{{ route('profile.index') }}">Profile</a>
+
+        @if (auth()->check())
+            <a href="{{ route('profile.index') }}">Profile</a>
+            <a href="{{ route('logout') }}">Logout</a>
+        @else
+            <a href="{{ route('register') }}">Register</a>
+            <a href="{{ route('login') }}">Login</a>
+        @endif
     </main>
 </body>
 

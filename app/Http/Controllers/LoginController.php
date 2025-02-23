@@ -20,8 +20,9 @@ class LoginController
     public function store(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
+        $remember = boolval($request->remember);
 
-        $authenticated = Auth::attempt($credentials);
+        $authenticated = Auth::attempt($credentials, $remember);
 
         if (!$authenticated) {
             return redirect()->route('login')->withErrors([
@@ -29,12 +30,18 @@ class LoginController
             ]);
         }
 
+        $request->session()->regenerate();
+
         return redirect()->route('profile.index')->with('success', 'Login efetuado com sucesso');
     }
 
     public function destroy(Request $request)
     {
         Auth::logout();
-        return redirect()->route('login')->with('success', 'Logout efetuado com sucesso');
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('home')->with('success', 'Logout efetuado com sucesso');
     }
 }
