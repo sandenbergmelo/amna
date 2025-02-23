@@ -19,6 +19,7 @@
     <img src="{{ asset($user->profile_photo_path) }}" width="200" height="200" alt="Foto de perfil">
     <br>
     <span>Logado como "{{ $user->name }}"</span>
+    <a href="{{ route('profile.edit') }}">Editar</a>
     <a href="{{ route('logout') }}">Logout</a>
 </body>
 
