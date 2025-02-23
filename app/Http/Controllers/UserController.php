@@ -160,8 +160,19 @@ class UserController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
-        //
+        $authenticatedUser = Auth::user();
+
+        // Check if the authenticated user is the same as the user being updated
+        if ($authenticatedUser->id !== $user->id) {
+            return redirect()->route('profile.index')->withErrors([
+                'error' => 'Você não tem permissão para excluir este usuário',
+            ]);
+        }
+
+        $user->delete();
+
+        return redirect()->route('home')->with('success', 'Conta excluída com sucesso');
     }
 }

@@ -20,6 +20,12 @@
 <body>
     <main>
         <h1>Hello, World!</h1>
+
+        @session('success')
+            <span>{{ session('success') }}</span>
+        @endsession
+
+        <br>
         <a href="{{ route('register') }}">Register</a>
         <a href="{{ route('login') }}">Login</a>
         <a href="{{ route('profile.index') }}">Profile</a>

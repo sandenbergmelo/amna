@@ -38,6 +38,7 @@
     </form>
     <span>Logado como "{{ $user->name }}"</span>
     <a href="{{ route('profile.edit') }}">Editar</a>
+    <a href="{{ route('profile.delete', $user) }}">Deletar</a>
     <a href="{{ route('logout') }}">Logout</a>
 </body>
 
