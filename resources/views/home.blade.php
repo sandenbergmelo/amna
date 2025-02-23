@@ -12,14 +12,23 @@
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
     <!-- Styles / Scripts -->
-    @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
+    {{-- @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-    @endif
+    @endif --}}
 </head>
 
 <body>
     <main>
         <h1>Hello, World!</h1>
+
+        @session('success')
+            <span>{{ session('success') }}</span>
+        @endsession
+
+        <br>
+        <a href="{{ route('register') }}">Register</a>
+        <a href="{{ route('login') }}">Login</a>
+        <a href="{{ route('profile.index') }}">Profile</a>
     </main>
 </body>
 

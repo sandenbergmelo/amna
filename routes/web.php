@@ -16,10 +16,22 @@ Route::controller(LoginController::class)->group(function () {
 
 Route::resource('users', UserController::class)
     ->except(['show', 'create'])
-    ->middlewareFor(['edit', 'update', 'destroy'], 'auth');
+    ->middlewareFor(['update', 'destroy', 'delete'], 'auth');
 
 Route::get('/profile', [UserController::class, 'show'])
     ->name('profile.index')
+    ->middleware('auth');
+
+Route::get('/profile/edit', [UserController::class, 'edit'])
+    ->name('profile.edit')
+    ->middleware('auth');
+
+Route::patch('/profile/update-photo/{user}', [UserController::class, 'updatePhoto'])
+    ->name('profile.update-photo')
+    ->middleware('auth');
+
+Route::get('/profile/delete/{user}', [UserController::class, 'destroy'])
+    ->name('profile.delete')
     ->middleware('auth');
 
 Route::get('/register', [UserController::class, 'create'])

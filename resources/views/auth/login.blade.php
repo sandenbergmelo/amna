@@ -28,6 +28,10 @@
         <span>{{ $message }}</span>
     @enderror
 
+    @error('error')
+        <span>{{ $message }}</span>
+    @enderror
+
     <form action="{{ route('login.store') }}" method="POST">
         @csrf
         <label for="email">Email</label>

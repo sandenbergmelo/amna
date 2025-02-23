@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('password');
             $table->enum('profile_type', ['resident', 'admin', 'associate'])->default('resident');
             $table->string('profile_photo_path', 2048)->nullable();
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });
