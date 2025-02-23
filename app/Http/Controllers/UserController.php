@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Helpers\EmailHelper;
 use App\Http\Requests\CreateUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -38,6 +39,12 @@ class UserController
         $profile_photo->storeAs('profile_photos', $photo_file_name, 'public');
         $profile_photo_path = 'storage/profile_photos/' . $photo_file_name;
         $request['profile_photo_path'] = $profile_photo_path;
+
+        if (!EmailHelper::emailExists($request->email)) {
+            return redirect()->route('register')->withErrors([
+                'email' => 'Email não existe',
+            ]);
+        }
 
         $user = User::create($request->all());
 
