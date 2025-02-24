@@ -32,6 +32,9 @@
                 @foreach ($user->news as $newsItem)
                     <section style="border: 1px solid black; padding: 10px; margin-top: 10px; width: 50%;">
                         <h3>{{ $newsItem->title }}</h3>
+                        <p>Postado por: {{ $newsItem->author->name }}</p>
+                        <p>Data de criação: {{ \App\Helpers\DateHelper::formatDate($newsItem->created_at) }}</p>
+
                         @if ($newsItem->image_path)
                             <img src="{{ asset($newsItem->image_path) }}" alt="{{ $newsItem->title }}"
                                 style="max-width: 300px;">
@@ -61,8 +64,8 @@
                                 style="max-width: 300px;">
                         @endif
                         <p>{{ $event->description }}</p>
-                        {{-- <a href="{{ route('events.edit', ['event' => $event]) }}">Editar</a> --}}
-                        {{-- <a href="{{ route('events.delete', ['event' => $event->id]) }}">Deletar</a> --}}
+                        <a href="{{ route('events.edit', ['event' => $event]) }}">Editar</a>
+                        <a href="{{ route('events.delete', ['event' => $event]) }}">Deletar</a>
                     </section>
                 @endforeach
 

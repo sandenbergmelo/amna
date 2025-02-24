@@ -64,3 +64,15 @@ Route::get('/news/delete/{news}', [NewsController::class, 'destroy'])
 Route::resource('events', EventController::class)
     ->except(['show', 'edit', 'update', 'delete'])
     ->middleware('auth');
+
+Route::get('/events/edit/{event}', [EventController::class, 'edit'])
+    ->name('events.edit')
+    ->middleware('auth');
+
+Route::patch('/events/update/{event}', [EventController::class, 'update'])
+    ->name('events.update')
+    ->middleware('auth');
+
+Route::get('/events/delete/{event}', [EventController::class, 'destroy'])
+    ->name('events.delete')
+    ->middleware('auth');

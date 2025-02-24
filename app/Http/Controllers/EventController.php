@@ -10,14 +10,6 @@ use Illuminate\Support\Facades\Auth;
 class EventController
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -48,7 +40,14 @@ class EventController
             ]);
         }
 
+        if ($request->start_date > $request->end_date) {
+            return redirect()->route('events.create')->withErrors([
+                'start_date' => 'A data de início deve ser anterior à data de término',
+            ]);
+        }
+
         $image = $request->file('image');
+
         if ($image) {
             $original_name = $image->getClientOriginalName();
 
@@ -68,27 +67,69 @@ class EventController
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Event $event)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Event $event)
     {
-        //
+        /**  @var User $user */
+        $user = Auth::user();
+
+        if (!$user->isAdmin()) {
+            return redirect()->route('dashboard')->withErrors([
+                'error' => 'Somente administradores podem editar eventos',
+            ]);
+        }
+
+        return view('events.edit', compact('event'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Event $event)
+    public function update(EventRequest $request, Event $event)
     {
-        //
+        /**  @var User $user */
+        $user = Auth::user();
+
+        if (!$user->isAdmin()) {
+            return redirect()->route('dashboard')->withErrors([
+                'error' => 'Somente administradores podem atualizar eventos',
+            ]);
+        }
+
+        if ($request->start_date > $request->end_date) {
+            return redirect()->route('events.create')->withErrors([
+                'start_date' => 'A data de início deve ser anterior à data de término',
+            ]);
+        }
+
+        $image = $request->file('image');
+
+        if ($image) {
+            $original_name = $image->getClientOriginalName();
+
+            $image_file_name = date('YmdHisu')
+                . '-'
+                . str_replace(' ', '-', $original_name);
+
+            $image->storeAs('event_images', $image_file_name, 'public');
+            $image_path = 'storage/event_images/' . $image_file_name;
+
+            $request['image_path'] = $image_path;
+        }
+
+        $old_image_path = $event->image_path;
+        $event->update($request->all());
+
+        if ($image && $old_image_path) {
+            $old_image_full_path = public_path($old_image_path);
+
+            if (file_exists($old_image_full_path)) {
+                unlink($old_image_full_path);
+            }
+        }
+
+        return redirect()->route('dashboard')->withSuccess('Evento atualizado com sucesso');
     }
 
     /**
@@ -96,6 +137,27 @@ class EventController
      */
     public function destroy(Event $event)
     {
-        //
+        /**  @var User $user */
+        $user = Auth::user();
+
+        if (!$user->isAdmin()) {
+            return redirect()->route('dashboard')->withErrors([
+                'edit_news' => 'Você não tem permissão para editar este evento',
+            ]);
+        }
+
+        $image_path = $event->image_path;
+        $event->delete();
+
+        // Remove the event image
+        if ($image_path) {
+            $image_full_path = public_path($image_path);
+
+            if (file_exists($image_full_path)) {
+                unlink($image_full_path);
+            }
+        }
+
+        return redirect()->route('dashboard')->withSuccess('Evento excluído com sucesso');
     }
 }

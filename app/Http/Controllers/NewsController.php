@@ -114,6 +114,7 @@ class NewsController
 
         if ($image && $old_image_path) {
             $old_image_full_path = public_path($old_image_path);
+
             if (file_exists($old_image_full_path)) {
                 unlink($old_image_full_path);
             }
