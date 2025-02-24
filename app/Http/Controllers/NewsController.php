@@ -125,8 +125,28 @@ class NewsController
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(News $news)
     {
-        //
+        /**  @var User $user */
+        $user = Auth::user();
+
+        if (!$user->isAdmin() || $user->id !== $news->user_id) {
+            return redirect()->route('dashboard')->withErrors([
+                'edit_news' => 'Você não tem permissão para editar esta notícia',
+            ]);
+        }
+
+        $image_path = $news->image_path;
+        $news->delete();
+
+        // Remove the news image
+        if ($image_path) {
+            $image_full_path = public_path($image_path);
+            if (file_exists($image_full_path)) {
+                unlink($image_full_path);
+            }
+        }
+
+        return redirect()->route('dashboard')->with('success', 'Notícia excluída com sucesso');
     }
 }

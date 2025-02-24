@@ -41,17 +41,20 @@ Route::get('/register', [UserController::class, 'create'])
 
 
 Route::resource('news', NewsController::class)
-    ->except(['show', 'edit', 'update'])
+    ->except(['show', 'edit', 'update', 'delete'])
     ->middleware('auth');
 
-Route::get('/news/{news}/edit', [NewsController::class, 'edit'])
+Route::get('/news/edit/{news}', [NewsController::class, 'edit'])
     ->name('news.edit')
     ->middleware('auth');
 
-Route::patch('/news/{news}', [NewsController::class, 'update'])
+Route::patch('/news/update/{news}', [NewsController::class, 'update'])
     ->name('news.update')
     ->middleware('auth');
 
+Route::get('/news/delete/{news}', [NewsController::class, 'destroy'])
+    ->name('news.delete')
+    ->middleware('auth');
 
 Route::get('/dashboard', [DashBoardController::class, 'index'])
     ->name('dashboard')

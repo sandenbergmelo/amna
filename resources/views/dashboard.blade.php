@@ -13,6 +13,10 @@
     <p>Welcome to the dashboard</p>
     <a href="{{ route('logout') }}">Logout</a>
 
+    @session('success')
+    <p>{{ session('success') }}</p>
+    @endsession
+
     {{-- List all news if user is admin with edit and delete links --}}
     @if ($user->isAdmin())
         <h2>Notícias</h2>
@@ -34,7 +38,7 @@
                     @endif
                     <p>{{ $newsItem->content }}</p>
                     <a href="{{ route('news.edit', ['news' => $newsItem]) }}">Editar</a>
-                    {{-- <a href="{{ route('news.destroy', ['news' => $newsItem->id]) }}">Deletar</a> --}}
+                    <a href="{{ route('news.delete', ['news' => $newsItem->id]) }}">Deletar</a>
                 </section>
             @endforeach
         </ul>
