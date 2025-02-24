@@ -19,6 +19,9 @@
 
     <section>
         <h2>Eventos que você está inscrito</h2>
+        @if ($user->eventRegistrations->isEmpty())
+            <p>Você não está inscrito em nenhum evento</p>
+        @endif
         @foreach ($user->eventRegistrations as $event)
             <section style="border: 1px solid black; padding: 10px; margin-top: 10px; width: 50%;">
                 <h3>{{ $event->title }}</h3>
