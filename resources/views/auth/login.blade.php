@@ -34,7 +34,6 @@
                         <div class="w-full py-2 flex justify-start flex-col">
                             <label for="password">Senha:</label>
                             <input class="w-full bg-white py-2 px-4 border border-black rounded" name="password" placeholder="Sua senha" type="password" minlength="8" required>
-                            <a class="py-1 text-blue-400 hover:text-blue-300 underline transition" href="">Esqueceu a senha?</a>
                         </div>
                         <div class="flex items-center space-x-2">
                             <label for="remember" class="text-gray-700 text-sm font-medium">Lembrar-se de mim</label>
