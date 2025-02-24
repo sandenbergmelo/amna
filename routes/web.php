@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
@@ -36,3 +37,8 @@ Route::get('/profile/delete/{user}', [UserController::class, 'destroy'])
 
 Route::get('/register', [UserController::class, 'create'])
     ->name('register');
+
+
+Route::get('/dashboard', [DashBoardController::class, 'index'])
+    ->name('dashboard')
+    ->middleware('auth');
