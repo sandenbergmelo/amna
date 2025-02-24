@@ -27,6 +27,11 @@ class User extends Authenticatable
         'profile_photo_path',
     ];
 
+    public function isAdmin(): bool
+    {
+        return $this->profile_type === 'admin';
+    }
+
     public function news(): HasMany
     {
         return $this->hasMany(News::class, 'user_id', 'id');
