@@ -16,7 +16,7 @@ class UserController
     public function create()
     {
         if (Auth::check()) {
-            /**  @var User */ 
+            /**  @var User */
             $user = Auth::user();
 
             if(!($user->profile_type === 'admin')) {
@@ -51,11 +51,9 @@ class UserController
             ]);
         }
 
-        $user = User::create($request->all());
+        User::create($request->all());
 
-        // Authenticate the user
-        Auth::login($user);
-        return redirect()->route('profile.index')->with('success', 'Registro efetuado com sucesso');
+        return redirect()->route('login')->with('success', 'Registro efetuado com sucesso');
     }
 
     /**
