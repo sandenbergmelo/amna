@@ -132,6 +132,20 @@ class EventController
         return redirect()->route('dashboard')->withSuccess('Evento atualizado com sucesso');
     }
 
+    public function delete(Event $event)
+    {
+        /**  @var User $user */
+        $user = Auth::user();
+
+        if (!$user->isAdmin()) {
+            return redirect()->route('dashboard')->withErrors([
+                'edit_news' => 'Você não tem permissão para editar este evento',
+            ]);
+        }
+
+        return view('events.delete', compact('event'));
+    }
+
     /**
      * Remove the specified resource from storage.
      */

@@ -123,6 +123,20 @@ class NewsController
         return redirect()->route('dashboard')->with('success', 'Notícia atualizada com sucesso');
     }
 
+    public function delete(News $news)
+    {
+        /**  @var User $user */
+        $user = Auth::user();
+
+        if (!$user->isAdmin() || $user->id !== $news->user_id) {
+            return redirect()->route('dashboard')->withErrors([
+                'edit_news' => 'Você não tem permissão para deletar esta notícia',
+            ]);
+        }
+
+        return view('news.delete', compact('news'));
+    }
+
     /**
      * Remove the specified resource from storage.
      */
