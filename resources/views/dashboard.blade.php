@@ -17,6 +17,40 @@
         <p>{{ session('success') }}</p>
     @endsession
 
+    <section>
+        <h2>Eventos que você está inscrito</h2>
+        @if ($user->eventRegistrations->isEmpty())
+            <p>Você não está inscrito em nenhum evento</p>
+        @endif
+        @foreach ($user->eventRegistrations as $event)
+            <section style="border: 1px solid black; padding: 10px; margin-top: 10px; width: 50%;">
+                <h3>{{ $event->title }}</h3>
+                @if ($event->image_path)
+                    <img src="{{ asset($event->image_path) }}" alt="{{ $event->title }}" style="max-width: 300px;">
+                @endif
+                <p>{{ $event->description }}</p>
+                <p>Status: {{ $event->pivot->status_presence == 'Confirmed' ? 'Confirmado' : 'Pendente' }}</p>
+                @if ($event->pivot->status_presence == 'Pending')
+                    {{-- Confirm presence --}}
+                    <form action="{{ route('event-registration.update', ['id' => $event->pivot->id]) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="status_presence" value="Confirmed">
+                        <button type="submit">Confirmar presença</button>
+                    </form>
+                @else
+                    {{-- Cancel presence --}}
+                    <form action="{{ route('event-registration.update', ['id' => $event->pivot->id]) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="status_presence" value="Pending">
+                        <button type="submit">Cancelar presença</button>
+                    </form>
+                @endif
+            </section>
+        @endforeach
+    </section>
+
     {{-- List all news if user is admin with edit and delete links --}}
     @if ($user->isAdmin())
         <section>

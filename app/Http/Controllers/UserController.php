@@ -156,6 +156,20 @@ class UserController
         return redirect()->route('profile.index')->with('success', 'Foto de perfil atualizada com sucesso');
     }
 
+    public function delete(User $user)
+    {
+        $authenticatedUser = Auth::user();
+
+        // Check if the authenticated user is the same as the user being updated
+        if ($authenticatedUser->id !== $user->id) {
+            return redirect()->route('profile.index')->withErrors([
+                'error' => 'Você não tem permissão para excluir este usuário',
+            ]);
+        }
+
+        return view('profile.delete', compact('user'));
+    }
+
     /**
      * Remove the specified resource from storage.
      */

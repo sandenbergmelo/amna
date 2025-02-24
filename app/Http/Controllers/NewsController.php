@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Auth;
 class NewsController
 {
     /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $news = News::orderBy('created_at', 'desc')->paginate(10);
+        return view('news.index', compact('news'));
+    }
+
+    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -121,6 +130,20 @@ class NewsController
         }
 
         return redirect()->route('dashboard')->with('success', 'Notícia atualizada com sucesso');
+    }
+
+    public function delete(News $news)
+    {
+        /**  @var User $user */
+        $user = Auth::user();
+
+        if (!$user->isAdmin() || $user->id !== $news->user_id) {
+            return redirect()->route('dashboard')->withErrors([
+                'edit_news' => 'Você não tem permissão para deletar esta notícia',
+            ]);
+        }
+
+        return view('news.delete', compact('news'));
     }
 
     /**

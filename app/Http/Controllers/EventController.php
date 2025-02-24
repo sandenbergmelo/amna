@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class EventController
 {
+    public function index()
+    {
+        $events = Event::orderBy('start_date', 'desc')->paginate(10);
+        return view('events.index', compact('events'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -130,6 +136,20 @@ class EventController
         }
 
         return redirect()->route('dashboard')->withSuccess('Evento atualizado com sucesso');
+    }
+
+    public function delete(Event $event)
+    {
+        /**  @var User $user */
+        $user = Auth::user();
+
+        if (!$user->isAdmin()) {
+            return redirect()->route('dashboard')->withErrors([
+                'edit_news' => 'Você não tem permissão para editar este evento',
+            ]);
+        }
+
+        return view('events.delete', compact('event'));
     }
 
     /**

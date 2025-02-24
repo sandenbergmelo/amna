@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventRegistrationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NewsController;
@@ -33,7 +34,7 @@ Route::patch('/profile/update-photo/{user}', [UserController::class, 'updatePhot
     ->name('profile.update-photo')
     ->middleware('auth');
 
-Route::get('/profile/delete/{user}', [UserController::class, 'destroy'])
+Route::get('/profile/delete/{user}', [UserController::class, 'delete'])
     ->name('profile.delete')
     ->middleware('auth');
 
@@ -56,10 +57,9 @@ Route::patch('/news/update/{news}', [NewsController::class, 'update'])
     ->name('news.update')
     ->middleware('auth');
 
-Route::get('/news/delete/{news}', [NewsController::class, 'destroy'])
+Route::get('/news/delete/{news}', [NewsController::class, 'delete'])
     ->name('news.delete')
     ->middleware('auth');
-
 
 Route::resource('events', EventController::class)
     ->except(['show', 'edit', 'update', 'delete'])
@@ -73,6 +73,18 @@ Route::patch('/events/update/{event}', [EventController::class, 'update'])
     ->name('events.update')
     ->middleware('auth');
 
-Route::get('/events/delete/{event}', [EventController::class, 'destroy'])
+Route::get('/events/delete/{event}', [EventController::class, 'delete'])
     ->name('events.delete')
+    ->middleware('auth');
+
+Route::resource('event-registration', EventRegistrationController::class)
+    ->only(['store', 'destroy'])
+    ->middleware('auth');
+
+Route::get('/event-registration/create/{event}', [EventRegistrationController::class, 'create'])
+    ->name('event-registration.create')
+    ->middleware('auth');
+
+Route::put('/event-registration/update/{id}', [EventRegistrationController::class, 'update'])
+    ->name('event-registration.update')
     ->middleware('auth');
