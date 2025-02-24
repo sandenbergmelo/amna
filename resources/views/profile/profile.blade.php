@@ -13,7 +13,7 @@
 <body class="w-full h-full flex justify-center items-center flex-col bg-gray-100">
     <x-profile.header/>
     <main class="lg:w-amna-app w-full h-full text-black flex justify-center items-center flex-col px-5">
-        <div class="min-h-[50rem] flex flex-col py-4 lg:w-amna-content md:w-amna-app-md">
+        <div class="min-h-[50rem] flex flex-col py-4 lg:w-amna-content-lg md:w-amna-app-content-md">
             <h2 class="text-3xl lg:text-4xl font-bold text-[#010360] ">Seu Perfil</h2>
             @session('success')
                 <span class="text-green-400 py-4">{{ session('success') }}</span>

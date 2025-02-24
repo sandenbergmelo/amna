@@ -12,7 +12,7 @@
 </head>
 
 <body class="w-full h-full flex justify-center items-center flex-col">
-    <main class="text-black flex justify-start items-center flex-col lg:justify-center lg:w-amna-app md:w-amna-app-content-mdlg:h-screen">
+    <main class="text-black flex justify-start items-center flex-col lg:justify-center lg:w-amna-app md:w-w-amna-app-content-mdlg:h-screen">
         <div class="w-full py-4 mt-4 rounded-md transition-all duration-200 lg:mt-0 md:w-[25rem] md:shadow-2xl">
             <div class="h-full w-full flex flex-col">
                 <div class="w-full flex flex-col">

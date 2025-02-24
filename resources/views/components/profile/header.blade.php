@@ -1,6 +1,6 @@
 <header class="w-full flex flex-col justify-center items-center bg-white text-white border-gray-300 border-b shadow-md relative">
     <!-- Cabeçalho com logo e botão do menu -->
-    <main class="w-full lg:w-amna-app md:w-amna-app-content-md">
+    <main class="w-full lg:w-amna-app md:w-w-amna-app-content-md">
         <div class="flex flex-col md:flex-row md:justify-center relative">
             <div class="flex h-full items-center justify-between py-6 px-7 w-full md:justify-center">
                 <a class="text-7xl font-serif flex items-center text-black" href="{{ route('home') }}">

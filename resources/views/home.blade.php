@@ -21,7 +21,7 @@
             <div class="mt-4">
                 <x-carousel/>
             </div>
-            <div class="w-full flex flex-col justify-between text-justify my-1 px-5 lg:flex-row md:flex-col lg:my-6 lg:px-0 lg:w-amna-app md:w-amna-app-content-md">
+            <div class="w-full flex flex-col justify-between text-justify my-1 px-5 lg:flex-row md:flex-col lg:my-6 lg:px-0 lg:w-amna-app md:w-w-amna-app-content-md">
                 <div class="w-full h-full bg-white my-6 p-5 rounded-[0.625rem] lg:w-amna-content-lg">
                     <h2 class="text-3xl lg:text-4xl font-bold text-[#010360] pb-4">Bem Vindo a AMNA</h2>
                     <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, dolorum perspiciatis voluptate soluta tempora corrupti sapiente odit! Perferendis, rem cupiditate facere recusandae necessitatibus cum consequuntur officiis ducimus tenetur sit quae?</p>
