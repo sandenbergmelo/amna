@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DashBoardController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NewsController;
@@ -39,6 +40,9 @@ Route::get('/profile/delete/{user}', [UserController::class, 'destroy'])
 Route::get('/register', [UserController::class, 'create'])
     ->name('register');
 
+Route::get('/dashboard', [DashBoardController::class, 'index'])
+    ->name('dashboard')
+    ->middleware('auth');
 
 Route::resource('news', NewsController::class)
     ->except(['show', 'edit', 'update', 'delete'])
@@ -56,6 +60,19 @@ Route::get('/news/delete/{news}', [NewsController::class, 'destroy'])
     ->name('news.delete')
     ->middleware('auth');
 
-Route::get('/dashboard', [DashBoardController::class, 'index'])
-    ->name('dashboard')
+
+Route::resource('events', EventController::class)
+    ->except(['show', 'edit', 'update', 'delete'])
+    ->middleware('auth');
+
+Route::get('/events/edit/{event}', [EventController::class, 'edit'])
+    ->name('events.edit')
+    ->middleware('auth');
+
+Route::patch('/events/update/{event}', [EventController::class, 'update'])
+    ->name('events.update')
+    ->middleware('auth');
+
+Route::get('/events/delete/{event}', [EventController::class, 'destroy'])
+    ->name('events.delete')
     ->middleware('auth');

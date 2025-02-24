@@ -71,9 +71,9 @@ class NewsController
         /**  @var User $user */
         $user = Auth::user();
 
-        if (!$user->isAdmin()) {
+        if (!$user->isAdmin() || $user->id !== $news->user_id) {
             return redirect()->route('dashboard')->withErrors([
-                'create_news' => 'Somente administradores podem editar notícias',
+                'create_news' => 'Você não tem permissão para editar esta notícia',
             ]);
         }
 
@@ -114,6 +114,7 @@ class NewsController
 
         if ($image && $old_image_path) {
             $old_image_full_path = public_path($old_image_path);
+
             if (file_exists($old_image_full_path)) {
                 unlink($old_image_full_path);
             }
