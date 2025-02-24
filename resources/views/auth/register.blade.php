@@ -12,7 +12,7 @@
 </head>
 
 <body class="w-full h-full flex justify-center items-center flex-col">
-    <main class="lg:w-amna-app md:w-amna-app-content-md min-h-[50rem] text-black flex justify-start items-center flex-col md:justify-center mt-4 md:mt-0">
+    <main class="lg:w-amna-app md:w-w-amna-app-content-md min-h-[50rem] text-black flex justify-start items-center flex-col md:justify-center mt-4 md:mt-0">
         <div class="py-4 w-full md:w-[25rem] md:shadow-2xl rounded-md transition-all duration-200">
             <div class="h-full w-full">
                 <div>
@@ -48,9 +48,31 @@
                             <label for="password_again">Confirmar Senha</label>
                             <input class="bg-white py-2 px-4 w-full border border-black rounded" type="password" name="password_again" id="password_again" placeholder="Sua senha novamente" minlength="8" required>
                         </div>
+
+                        @if (auth()->check())
+                            @if (auth()->user()->profile_type == 'admin')
+                        
+                                <div class="w-full py-2">
+                                    <p>O usuário é admin?</p>
+                                    <div class="w-full flex">
+                                        <div class="flex items-center pe-4">
+                                            <label for="profile_type_yes">Sim</label>
+                                            <input class="w-5 h-5 text-blue-600 bg-gray-100 focus:ring-blue-500 focus:ring-2 cursor-pointer" type="radio" name="profile_type" id="profile_type_yes" value="admin">
+                                        </div>
+                                        <div class="flex justify-start items-center">
+                                            <label for="profile_type_no">Não</label>
+                                            <input class="w-5 h-5 text-blue-600 bg-gray-100 focus:ring-blue-500 focus:ring-2 cursor-pointer" type="radio" name="profile_type" id="profile_type_no" value="resident">
+                                        </div>
+                                    </div>
+                                </div>
+
+                            @endif
+                        @endif
+
                         <div class="w-full flex justify-start flex-col">
                             <input class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer" type="submit" value="Cadastrar">
                         </div>
+
                         <div class="text-red-600">
                             @error('name')
                                 <span class="error-message">{{ $message }}</span>
@@ -91,8 +113,7 @@
                                 }
                                 });
                             });
-
-                            
+         
                             document.addEventListener("DOMContentLoaded", function() {
                                 // Seleciona todos os inputs do formulário
                                 let inputs = document.querySelectorAll("input, select, textarea");

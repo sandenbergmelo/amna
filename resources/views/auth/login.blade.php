@@ -12,7 +12,7 @@
 </head>
 
 <body class="w-full h-full flex justify-center items-center flex-col">
-    <main class="text-black flex justify-start items-center flex-col lg:justify-center lg:w-amna-app md:w-amna-app-content-mdlg:h-screen">
+    <main class="text-black flex justify-start items-center flex-col lg:justify-center lg:w-amna-app md:w-w-amna-app-content-mdlg:h-screen">
         <div class="w-full py-4 mt-4 rounded-md transition-all duration-200 lg:mt-0 md:w-[25rem] md:shadow-2xl">
             <div class="h-full w-full flex flex-col">
                 <div class="w-full flex flex-col">
@@ -34,7 +34,6 @@
                         <div class="w-full py-2 flex justify-start flex-col">
                             <label for="password">Senha:</label>
                             <input class="w-full bg-white py-2 px-4 border border-black rounded" name="password" placeholder="Sua senha" type="password" minlength="8" required>
-                            <a class="py-1 text-blue-400 hover:text-blue-300 underline transition" href="">Esqueceu a senha?</a>
                         </div>
                         <div class="flex items-center space-x-2">
                             <label for="remember" class="text-gray-700 text-sm font-medium">Lembrar-se de mim</label>

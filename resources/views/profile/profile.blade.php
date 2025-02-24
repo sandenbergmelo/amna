@@ -13,7 +13,7 @@
 <body class="w-full h-full flex justify-center items-center flex-col bg-gray-100">
     <x-profile.header/>
     <main class="lg:w-amna-app w-full h-full text-black flex justify-center items-center flex-col px-5">
-        <div class="min-h-[50rem] flex flex-col py-4 lg:w-amna-content md:w-amna-app-md">
+        <div class="min-h-[50rem] flex flex-col py-4 lg:w-amna-content-lg md:w-amna-app-content-md">
             <h2 class="text-3xl lg:text-4xl font-bold text-[#010360] ">Seu Perfil</h2>
             @session('success')
                 <span class="text-green-400 py-4">{{ session('success') }}</span>
@@ -22,16 +22,16 @@
                 <span>{{ $message }}</span>
             @enderror
             <div class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg border-2 border-gray-300">
-                    <main class="w-full text-black flex flex-col justify-center items-center">
-                        <div class="flex justify-center items-center">
-                            <p class="text-lg font-bold pe-2"></p>
-                            <img class="w-14 h-14 border rounded-full border-black hover:bg-gray-400" src="{{ asset(auth()->user()->profile_photo_path) }}" alt="{{ auth()->user()->name }}">
-                        </div>
-                        <div class="w-full flex flex-col justify-center items-center pt-3">
-                            <p class="text-lg font-bold">{{ $user->name }} </p>
-                            <p class="text-lg font-bold">{{ $user->email }} </p>
-                        </div>
-                    </main>
+                <main class="w-full text-black flex flex-col justify-center items-center">
+                    <div class="flex justify-center items-center">
+                        <p class="text-lg font-bold pe-2"></p>
+                        <img class="w-14 h-14 border rounded-full border-black hover:bg-gray-400" src="{{ asset(auth()->user()->profile_photo_path) }}" alt="{{ auth()->user()->name }}">
+                    </div>
+                    <div class="w-full flex flex-col justify-center items-center pt-3">
+                        <p class="text-lg font-bold">{{ $user->name }} </p>
+                        <p class="text-lg font-bold">{{ $user->email }} </p>
+                    </div>
+                </main>
             </div>  
             <div class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg border-2 border-gray-300">
                 <div class="text-black w-full">
@@ -49,7 +49,7 @@
                         @method('patch')
                         <div class="w-full py-2 flex flex-col">
                             <label class="text-lg font-bold" for="profile_photo">Trocar foto de perfil</label>
-                            <input class="text-black text-center font-semibold py-2 transition duration-300 cursor-pointer" type="file" name="profile_photo" id="profile_photo" accept="image/*" required>
+                            <input class="text-black text-center font-semibold py-2 transition duration-300 cursor-pointer" type="file" name="profile_photo" id="profile_photo" accept="image/*" size="" required>
                         </div>
                         <div class="w-full flex justify-start">
                             <input class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300" type="submit" value="Trocar">

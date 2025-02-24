@@ -25,7 +25,8 @@ class CreateUserRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users',
             'password' => 'required|string|min:8',
-            'profile_photo' => 'required|image|mimes:jpeg,png,jpg|max:2048'
+            'profile_photo' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'profile_type' => 'in:admin,resident'
         ];
     }
 
@@ -41,7 +42,8 @@ class CreateUserRequest extends FormRequest
             'profile_photo.required' => 'A foto de perfil é obrigatória.',
             'profile_photo.image' => 'O arquivo deve ser uma imagem.',
             'profile_photo.mimes' => 'O arquivo deve ser uma imagem do tipo: jpeg, png ou jpg.',
-            'profile_photo.max' => 'O arquivo deve ter no máximo 2MB.'
+            'profile_photo.max' => 'O arquivo deve ter no máximo 2MB.',
+            'profile_type.in' => 'O tipo do pefil deve ser "admin" ou "resident"'
         ];
     }
 }
