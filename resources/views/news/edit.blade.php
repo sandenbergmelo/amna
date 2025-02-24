@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Criar notícia</title>
+    <title>Editar notícia</title>
     <style>
         body {
             display: flex;
@@ -55,8 +55,7 @@
 </head>
 
 <body>
-    <h1>Criar notícia</h1>
-
+    <h1>Editar notícia</h1>
     @error('title')
         <p>{{ $message }}</p>
     @enderror
@@ -76,22 +75,22 @@
     @error('error')
         <p>{{ $message }}</p>
     @enderror
-
-    <form action="{{ route('news.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('news.update', $news->id) }}" method="post" enctype="multipart/form-data">
         @csrf
+        @method('PATCH')
         <label for="title">Título</label>
-        <input type="text" name="title" id="title" required>
+        <input type="text" name="title" id="title" value="{{ $news->title }}">
 
         <label for="content">Conteúdo</label>
-        <textarea name="content" id="content" cols="30" rows="10" required></textarea>
+        <textarea name="content" id="content" cols="30" rows="10">{{ $news->content }}</textarea>
 
         <label for="external_link">Link externo</label>
-        <input type="url" name="external_link" id="external_link">
+        <input type="url" name="external_link" id="external_link" value="{{ $news->external_link }}">
 
-        <label for="image">Imagem relacionada (opcional)</label>
+        <label for="image">Imagem relacionada (deixe em branco para manter a atual)</label>
         <input type="file" name="image" id="image" accept="image/*">
 
-        <button type="submit">Criar</button>
+        <button type="submit">Salvar</button>
     </form>
     <a href="{{ route('dashboard') }}">Voltar</a>
 </body>

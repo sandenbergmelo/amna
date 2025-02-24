@@ -11,14 +11,6 @@ use Illuminate\Support\Facades\Auth;
 class NewsController
 {
     /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
      * Show the form for creating a new resource.
      */
     public function create()
@@ -56,9 +48,7 @@ class NewsController
 
             $image_file_name = date('YmdHisu')
                 . '-'
-                . str_replace(' ', '-', $original_name)
-                . '.'
-                . $image->extension();
+                . str_replace(' ', '-', $original_name);
 
             $image->storeAs('news_images', $image_file_name, 'public');
             $image_path = 'storage/news_images/' . $image_file_name;
@@ -74,27 +64,62 @@ class NewsController
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(News $news)
     {
-        //
+        /**  @var User $user */
+        $user = Auth::user();
+
+        if (!$user->isAdmin()) {
+            return redirect()->route('dashboard')->withErrors([
+                'create_news' => 'Somente administradores podem editar notícias',
+            ]);
+        }
+
+        return view('news.edit', compact('news'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(NewsRequest $request, News $news)
     {
-        //
+        /**  @var User $user */
+        $user = Auth::user();
+
+        if (!$user->isAdmin() || $user->id !== $news->user_id) {
+            return redirect()->route('dashboard')->withErrors([
+                'edit_news' => 'Você não tem permissão para editar esta notícia',
+            ]);
+        }
+
+        $image = $request->file('image');
+
+        if ($image) {
+            $original_name = $image->getClientOriginalName();
+
+            $image_file_name = date('YmdHisu')
+                . '-'
+                . str_replace(' ', '-', $original_name);
+
+            $image->storeAs('news_images', $image_file_name, 'public');
+            $image_path = 'storage/news_images/' . $image_file_name;
+
+            $request['image_path'] = $image_path;
+        }
+
+        $old_image_path = $news->image_path;
+        $news->update($request->all());
+
+        if ($image && $old_image_path) {
+            $old_image_full_path = public_path($old_image_path);
+            if (file_exists($old_image_full_path)) {
+                unlink($old_image_full_path);
+            }
+        }
+
+        return redirect()->route('dashboard')->with('success', 'Notícia atualizada com sucesso');
     }
 
     /**

@@ -19,6 +19,7 @@ class NewsFactory extends Factory
         return [
             'title' => $this->faker->sentence,
             'content' => $this->faker->paragraph,
+            'external_link' => $this->faker->url,
             'user_id' => 1,
         ];
     }

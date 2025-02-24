@@ -19,6 +19,10 @@
         @error('create_news')
             <p>{{ $message }}</p>
         @enderror
+
+        @error('edit_news')
+            <p>{{ $message }}</p>
+        @enderror
         <a href="{{ route('news.create') }}">Criar notícia</a>
         <ul>
             @foreach ($user->news as $newsItem)
@@ -29,7 +33,7 @@
                             style="max-width: 300px;">
                     @endif
                     <p>{{ $newsItem->content }}</p>
-                    {{-- <a href="{{ route('news.edit', ['news' => $newsItem->id]) }}">Editar</a> --}}
+                    <a href="{{ route('news.edit', ['news' => $newsItem]) }}">Editar</a>
                     {{-- <a href="{{ route('news.destroy', ['news' => $newsItem->id]) }}">Deletar</a> --}}
                 </section>
             @endforeach
