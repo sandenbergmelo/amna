@@ -48,9 +48,23 @@
                             <label for="password_again">Confirmar Senha</label>
                             <input class="bg-white py-2 px-4 w-full border border-black rounded" type="password" name="password_again" id="password_again" placeholder="Sua senha novamente" minlength="8" required>
                         </div>
+
+                        @if (auth()->check())
+                            @if (auth()->user()->profile_type == 'admin')
+                        
+                                <div>
+                                    <p>O usuário é admin?</p>
+                                    <label for="profile_type_yes">Sim</label><input type="radio" name="profile_type" id="profile_type_yes" value="admin">
+                                    <label for="profile_type_no">Não</label><input type="radio" name="profile_type" id="profile_type_no" value="resident">
+                                </div>
+
+                            @endif
+                        @endif
+
                         <div class="w-full flex justify-start flex-col">
                             <input class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer" type="submit" value="Cadastrar">
                         </div>
+
                         <div class="text-red-600">
                             @error('name')
                                 <span class="error-message">{{ $message }}</span>
@@ -91,8 +105,7 @@
                                 }
                                 });
                             });
-
-                            
+         
                             document.addEventListener("DOMContentLoaded", function() {
                                 // Seleciona todos os inputs do formulário
                                 let inputs = document.querySelectorAll("input, select, textarea");

@@ -16,7 +16,12 @@ class UserController
     public function create()
     {
         if (Auth::check()) {
-            return redirect()->route('profile.index');
+            /**  @var User */ 
+            $user = Auth::user();
+
+            if(!($user->profile_type === 'admin')) {
+                return redirect()->route('profile.index');
+            }
         }
 
         return view('auth.register');
