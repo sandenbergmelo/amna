@@ -49,7 +49,7 @@
                         @method('patch')
                         <div class="w-full py-2 flex flex-col">
                             <label class="text-lg font-bold" for="profile_photo">Trocar foto de perfil</label>
-                            <input class="text-black text-center font-semibold py-2 transition duration-300 cursor-pointer" type="file" name="profile_photo" id="profile_photo" accept="image/*" required>
+                            <input class="text-black text-center font-semibold py-2 transition duration-300 cursor-pointer" type="file" name="profile_photo" id="profile_photo" accept="image/*" size="" required>
                         </div>
                         <div class="w-full flex justify-start">
                             <input class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300" type="submit" value="Trocar">

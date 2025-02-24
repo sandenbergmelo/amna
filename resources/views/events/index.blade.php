@@ -17,7 +17,7 @@
     </head>
     <body class="w-full h-full flex justify-center items-center flex-col bg-gray-100">
         <x-header/>
-        <main class="h-full flex justify-center items-center flex-col px-5 lg:w-amna-app ">
+        <main class="h-full flex justify-center items-center flex-col px-5 lg:w-amna-app">
             <div class="min-h-[50rem] flex flex-col py-4 lg:w-amna-content-lg md:w-amna-app-content-md">
                 <h2 class="text-3xl lg:text-4xl font-bold text-[#010360] ">Últimos Eventos</h2>
                 @foreach ($events as $event)

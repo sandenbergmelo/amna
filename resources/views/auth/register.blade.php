@@ -52,10 +52,18 @@
                         @if (auth()->check())
                             @if (auth()->user()->profile_type == 'admin')
                         
-                                <div>
+                                <div class="w-full py-2">
                                     <p>O usuário é admin?</p>
-                                    <label for="profile_type_yes">Sim</label><input type="radio" name="profile_type" id="profile_type_yes" value="admin">
-                                    <label for="profile_type_no">Não</label><input type="radio" name="profile_type" id="profile_type_no" value="resident">
+                                    <div class="w-full flex">
+                                        <div class="flex items-center pe-4">
+                                            <label for="profile_type_yes">Sim</label>
+                                            <input class="w-5 h-5 text-blue-600 bg-gray-100 focus:ring-blue-500 focus:ring-2 cursor-pointer" type="radio" name="profile_type" id="profile_type_yes" value="admin">
+                                        </div>
+                                        <div class="flex justify-start items-center">
+                                            <label for="profile_type_no">Não</label>
+                                            <input class="w-5 h-5 text-blue-600 bg-gray-100 focus:ring-blue-500 focus:ring-2 cursor-pointer" type="radio" name="profile_type" id="profile_type_no" value="resident">
+                                        </div>
+                                    </div>
                                 </div>
 
                             @endif
