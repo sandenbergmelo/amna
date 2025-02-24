@@ -21,7 +21,6 @@ class EventFactory extends Factory
             'description' => $this->faker->paragraph,
             'start_date' => $startDate = $this->faker->dateTimeBetween('-1 year', 'now'),
             'end_date' => $this->faker->dateTimeBetween($startDate, '+1 year'),
-            'form_registration_url' => $this->faker->url,
         ];
     }
 }
