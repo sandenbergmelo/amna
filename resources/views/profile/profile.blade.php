@@ -22,16 +22,16 @@
                 <span>{{ $message }}</span>
             @enderror
             <div class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg border-2 border-gray-300">
-                    <main class="w-full text-black flex flex-col justify-center items-center">
-                        <div class="flex justify-center items-center">
-                            <p class="text-lg font-bold pe-2"></p>
-                            <img class="w-14 h-14 border rounded-full border-black hover:bg-gray-400" src="{{ asset(auth()->user()->profile_photo_path) }}" alt="{{ auth()->user()->name }}">
-                        </div>
-                        <div class="w-full flex flex-col justify-center items-center pt-3">
-                            <p class="text-lg font-bold">{{ $user->name }} </p>
-                            <p class="text-lg font-bold">{{ $user->email }} </p>
-                        </div>
-                    </main>
+                <main class="w-full text-black flex flex-col justify-center items-center">
+                    <div class="flex justify-center items-center">
+                        <p class="text-lg font-bold pe-2"></p>
+                        <img class="w-14 h-14 border rounded-full border-black hover:bg-gray-400" src="{{ asset(auth()->user()->profile_photo_path) }}" alt="{{ auth()->user()->name }}">
+                    </div>
+                    <div class="w-full flex flex-col justify-center items-center pt-3">
+                        <p class="text-lg font-bold">{{ $user->name }} </p>
+                        <p class="text-lg font-bold">{{ $user->email }} </p>
+                    </div>
+                </main>
             </div>  
             <div class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg border-2 border-gray-300">
                 <div class="text-black w-full">
