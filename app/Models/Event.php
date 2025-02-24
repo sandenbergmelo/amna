@@ -24,10 +24,16 @@ class Event extends Model
         'image_path'
     ];
 
+    public function isUserSubscribed(User $user): bool
+    {
+        return $this->users()->where('user_id', $user->id)->exists();
+    }
+
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class, 'event_registrations', 'event_id', 'user_id')
-            ->withPivot('registration_date', 'status_presence')
+            ->withPivot('registration_date', 'status_presence', 'id')
+            ->using(EventRegistration::class)
             ->withTimestamps();
     }
 }

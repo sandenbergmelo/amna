@@ -19,8 +19,15 @@
                         <img src="{{ asset($event->image_path) }}" alt="{{ $event->title }}" style="max-width: 300px;">
                     @endif
                     <p>{{ $event->description }}</p>
+                    {{--  Verifica se o usuário está inscrito no evento --}}
+                    @if ($event->isUserSubscribed(auth()->user()))
+                        <p>Já inscrito</p>
+                    @else
+                        <a href="{{ route('event-registration.create', ['event' => $event]) }}">Participar</a>
+                    @endif
                 </section>
             @endforeach
     </section>
 </body>
+
 </html>

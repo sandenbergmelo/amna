@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\EventRegistrationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NewsController;
@@ -74,4 +75,16 @@ Route::patch('/events/update/{event}', [EventController::class, 'update'])
 
 Route::get('/events/delete/{event}', [EventController::class, 'delete'])
     ->name('events.delete')
+    ->middleware('auth');
+
+Route::resource('event-registration', EventRegistrationController::class)
+    ->only(['store', 'destroy'])
+    ->middleware('auth');
+
+Route::get('/event-registration/create/{event}', [EventRegistrationController::class, 'create'])
+    ->name('event-registration.create')
+    ->middleware('auth');
+
+Route::put('/event-registration/update/{id}', [EventRegistrationController::class, 'update'])
+    ->name('event-registration.update')
     ->middleware('auth');
