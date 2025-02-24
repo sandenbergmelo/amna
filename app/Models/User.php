@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -25,6 +26,16 @@ class User extends Authenticatable
         'profile_type',
         'profile_photo_path',
     ];
+
+    public function isAdmin(): bool
+    {
+        return $this->profile_type === 'admin';
+    }
+
+    public function news(): HasMany
+    {
+        return $this->hasMany(News::class, 'user_id', 'id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

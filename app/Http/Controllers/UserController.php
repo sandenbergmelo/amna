@@ -172,6 +172,15 @@ class UserController
 
         $user->delete();
 
+        // Remove the user profile photo
+        $profile_photo = $authenticatedUser->profile_photo_path;
+        if ($profile_photo && $profile_photo !== 'storage/profile_photos/default.png') {
+            $profile_photo_path = public_path($profile_photo);
+            if (file_exists($profile_photo_path)) {
+                unlink($profile_photo_path);
+            }
+        }
+
         return redirect()->route('home')->with('success', 'Conta excluída com sucesso');
     }
 }
