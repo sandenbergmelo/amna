@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>AMNA</title>
+        <title>Início</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -37,7 +37,7 @@
                                     </header>
                                     <footer class="pb-2">
                                         <a href="{{ route('events.show', ['event' => $event]) }}"
-                                            class="text-blue-400 hover:text-blue-300 underline transition">Abrir evento</a>
+                                            class="text-blue-400 hover:text-blue-300 underline transition">🔗 Abrir evento</a>
                                     </footer>
                                 </div>
                             </section>
@@ -52,7 +52,7 @@
                                     <h3 class="text-lg font-bold pb-1">{{ $newsItem->title }}</h3>
                                 </header>
                                 <footer class="pb-2">
-                                    <a class="text-blue-400 hover:text-blue-300 underline transition pt-2" href="{{ route('news.show', ['news' => $newsItem]) }}">Abrir notícia</a>
+                                    <a class="text-blue-400 hover:text-blue-300 underline transition pt-2" href="{{ route('news.show', ['news' => $newsItem]) }}">🔗 Abrir notícia</a>
                                 </footer>
                             </div>
                         </section>

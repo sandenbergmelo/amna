@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Pefil</title>
+    <title>Dashboard</title>
     <!-- Styles / Scripts -->
     @if (file_exists(public_path('build/manifest.json')) || file_exists(public_path('hot')))
         @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -43,44 +43,46 @@
                     @endif
                     @foreach ($user->eventRegistrations as $event)
                         <section
-                            class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300 cursor-pointer"
+                            class="bg-white flex my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300 cursor-pointer"
                             style="font-size: 1.2em;">
-                            <h3 class="text-lg font-bold">{{ $event->title }}</h3>
                             @if ($event->image_path)
-                                <img class="pe-4" src="{{ asset($event->image_path) }}" alt="{{ $event->title }}">
+                                <img class="w-[25rem] h-[12.5rem] pe-4" src="{{ asset($event->image_path) }}" alt="{{ $event->title }}">
                             @endif
-                            <p>{{ $event->description ?? 'Sem descrição disponível.' }}</p>
-                            <p class="py-2">Status:
-                                {{ $event->pivot->status_presence == 'Confirmed' ? 'Confirmado' : 'Pendente' }}</p>
-                            <a href="{{ route('events.show', ['event' => $event]) }}"
-                            class="text-blue-400 hover:text-blue-300 underline transition">Abrir evento</a>
-                            @if ($event->pivot->status_presence == 'Pending')
-                                {{-- Confirm presence --}}
-                                <form action="{{ route('event-registration.update', ['id' => $event->pivot->id]) }}"
-                                    method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="w-full flex justify-start">
-                                        <input type="hidden" name="status_presence" value="Confirmed">
-                                        <button
-                                            class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer"
-                                            type="submit">Confirmar presença</button>
-                                    </div>
-                                </form>
-                            @else
-                                {{-- Cancel presence --}}
-                                <form action="{{ route('event-registration.update', ['id' => $event->pivot->id]) }}"
-                                    method="POST">
-                                    @csrf
-                                    @method('PUT')
-                                    <div class="w-full flex justify-start">
-                                        <input type="hidden" name="status_presence" value="Pending">
-                                        <button
-                                            class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer"
-                                            type="submit">Cancelar presença</button>
-                                    </div>
-                                </form>
-                            @endif
+                            <div class="flex flex-col">
+                                <h3 class="text-lg font-bold">{{ $event->title }}</h3>
+                                <p>{{ $event->description ?? 'Sem descrição disponível.' }}</p>
+                                <p class="py-2">Status:
+                                    {{ $event->pivot->status_presence == 'Confirmed' ? 'Confirmado' : 'Pendente' }}</p>
+                                <a href="{{ route('events.show', ['event' => $event]) }}"
+                                class="text-blue-400 hover:text-blue-300 underline transition">🔗 Abrir evento</a>
+                                @if ($event->pivot->status_presence == 'Pending')
+                                    {{-- Confirm presence --}}
+                                    <form action="{{ route('event-registration.update', ['id' => $event->pivot->id]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="w-full flex justify-start">
+                                            <input type="hidden" name="status_presence" value="Confirmed">
+                                            <button
+                                                class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer"
+                                                type="submit">Confirmar presença</button>
+                                        </div>
+                                    </form>
+                                @else
+                                    {{-- Cancel presence --}}
+                                    <form action="{{ route('event-registration.update', ['id' => $event->pivot->id]) }}"
+                                        method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="w-full flex justify-start">
+                                            <input type="hidden" name="status_presence" value="Pending">
+                                            <button
+                                                class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer"
+                                                type="submit">Cancelar presença</button>
+                                        </div>
+                                    </form>
+                                @endif
+                            </div>
                         </section>
                     @endforeach
                 </details>
@@ -117,13 +119,13 @@
                                     @endif
                                    <div class="flex flex-col">
                                         <h3 class="text-lg font-bold">{{ $newsItem->title }}</h3>
-                                        <p class="py-2">Postado por: {{ $newsItem->author->name }}</p>
-                                        <p>Data de criação:
+                                        <p class="py-2"><strong>✍️ Postado por</strong>: {{ $newsItem->author->name }}</p>
+                                        <p><strong>📅 Data de criação</strong>:
                                             {{ \App\Helpers\DateHelper::formatDateTime($newsItem->created_at) }}</p>
 
                                         <p class="py-2">{{ $newsItem->description }}</p>
                                         <a href="{{ route('news.show', ['news' => $newsItem]) }}"
-                                            class="text-blue-500 underline">Abrir
+                                            class="text-blue-500 underline">🔗 Abrir
                                             notícia</a>
                                         <div class="w-full flex justify-start">
                                             <a class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 me-4 border rounded transition duration-300 cursor-pointer"
@@ -171,13 +173,13 @@
                                     <div class="flex flex-col">
                                         <h3 class="text-lg font-bold">{{ $event->title }}</h3>
                                         <div class="pt-2">
-                                            <h4>Início: {{ \App\Helpers\DateHelper::formatDate($event->start_date) }}</h4>
-                                            <h4>Fim: {{ \App\Helpers\DateHelper::formatDate($event->end_date) }}</h4>
+                                            <h4><strong>📅 Início</strong>: {{ \App\Helpers\DateHelper::formatDate($event->start_date) }}</h4>
+                                            <h4><strong>📅 Fim</strong>: {{ \App\Helpers\DateHelper::formatDate($event->end_date) }}</h4>
                                         </div>
-                                        <p class="pt-1">Local: {{ $event->location }}</p>
+                                        <p class="pt-1"><strong>📍 Local</strong>: {{ $event->location }}</p>
                                         <p class="py-2">{{ $event->description }}</p>
                                         <a href="{{ route('events.show', ['event' => $event]) }}"
-                                            class="text-blue-400 hover:text-blue-300 underline transition">Abrir evento</a>
+                                            class="text-blue-400 hover:text-blue-300 underline transition">🔗 Abrir evento</a>
                                         <div class="w-full flex justify-start ">
                                             <a class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 me-4 border rounded transition duration-300"
                                                 href="{{ route('events.edit', ['event' => $event]) }}">Editar</a>

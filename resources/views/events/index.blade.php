@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>AMNA</title>
+    <title>Eventos</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -35,14 +35,17 @@
                         <header>
                             <h2 class="text-lg font-bold pb-2">{{ $event->title ?? 'Evento Sem Título' }}</h2>
                             <div class="pb-2">
-                                <h4>Início: {{ \App\Helpers\DateHelper::formatDate($event->start_date) }}</h4>
-                                <h4>Fim: {{ \App\Helpers\DateHelper::formatDate($event->end_date) }}</h4>
+                                <h4>📅 <strong>Início</strong>: {{ \App\Helpers\DateHelper::formatDate($event->start_date) }}</h4>
+                                <h4>📅 <strong>Fim</strong>: {{ \App\Helpers\DateHelper::formatDate($event->end_date) }}</h4>
+                                <h4>⏰ <strong>Horário:</strong> {{ \Carbon\Carbon::parse($event->start_time)->format('H:i') }} -
+                                    {{ \Carbon\Carbon::parse($event->end_time)->format('H:i') }}
+                                </h4>
                             </div>
                             <p>{{ $event->description ?? 'Sem descrição disponível.' }}</p>
                         </header>
                         <footer class="pt-2">
                             <a href="{{ route('events.show', ['event' => $event]) }}"
-                                class="text-blue-400 hover:text-blue-300 underline transition">Abrir evento</a>
+                                class="text-blue-400 hover:text-blue-300 underline transition">🔗 Abrir evento</a>
                         </footer>
                     </div>
                 </section>

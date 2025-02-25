@@ -24,17 +24,17 @@
                         <section class="bg-white flex my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300" style="font-size: 1.2em;">
                             <div>
                                 @if ($newsItem->image_path)
-                                    <img class="w-[25rem] h-[12.5em] pe-2" src="{{ asset($newsItem->image_path) }}" alt="{{ $newsItem->title }}">
+                                    <img class="w-[25rem] h-[12.5em] rounded-lg" src="{{ asset($newsItem->image_path) }}" alt="{{ $newsItem->title }}">
                                 @endif
                             </div>
-                            <div>
+                            <div class="ms-2">
                                 <main class="pb-2">
                                     <h3 class="text-lg font-bold">{{ $newsItem->title }}</h3>
-                                    <p class="py-2">Postado por: <span class="font-bold">{{ $newsItem->author->name }}</span></p>
-                                    <p class="pb-2">Data de criação: {{ \App\Helpers\DateHelper::formatDate($newsItem->created_at) }}</p>
+                                    <p class="py-2 font-bold">✍️ Postado por: <span class="font-normal">{{ $newsItem->author->name }}</span></p>
+                                    <p class="pb-2 font-bold">📅 Data de criação: <span class="font-normal">{{ \App\Helpers\DateHelper::formatDate($newsItem->created_at) }}</span></p>
                                     <p>{{ $newsItem->description }}</p>
                                 </main>
-                                <a class="text-blue-400 hover:text-blue-300 underline transition pt-2" href="{{ route('news.show', ['news' => $newsItem]) }}">Abrir notícia</a>
+                                <a class="text-blue-400 hover:text-blue-300 underline transition pt-2" href="{{ route('news.show', ['news' => $newsItem]) }}">🔗 Abrir notícia</a>
                             </div>
                         </section>
                     @endforeach
