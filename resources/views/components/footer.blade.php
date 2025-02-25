@@ -14,8 +14,7 @@
                 <a class="mx-2" href=""><img class="h-6 w-6 lg:h-8 lg:w-8" src="{{ asset('logos/facebook.png') }}" alt="logo facebook"></a>
                 <a class="mx-2" href=""><img class="h-6 w-6 lg:h-8 lg:w-8" src="{{ asset('logos/twitter.png') }}" alt="logo twitter"></a>
                 <a class="mx-2" href=""><img class="h-6 w-6 lg:h-8 lg:w-8" src="{{ asset('logos/instagram.png') }}" alt="logo instagram"></a>
-                <a class="mx-2" href=""><img class="h-6 w-6 lg:h-8 lg:w-8" src="{{ asset('logos/linkedin.png') }}" alt="logo linkedin"></a>
-                <a class="mx-2" href=""><img class="h-6 w-6 lg:h-8 lg:w-8" src="{{ asset('logos/github.svg') }}" alt="logo github"></a>
+                <a class="mx-2" href=""><img class="h-7 w-7 lg:h-10 lg:w-10" src="{{ asset('logos/youtube.png') }}" alt="logo instagram"></a>
             </div>
         </div>
     </div>

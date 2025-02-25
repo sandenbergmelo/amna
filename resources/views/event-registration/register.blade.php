@@ -12,6 +12,7 @@
 </head>
 
 <body class="w-full h-full flex justify-center items-center flex-col">
+    <x-header />
     <main class="lg:w-amna-app md:w-w-amna-app-content-md min-h-[50rem] text-black flex justify-start items-center flex-col md:justify-center mt-4 md:mt-0">
         <div class="py-4 w-full md:w-[25rem] md:shadow-2xl rounded-md transition-all duration-200">
             <div class="h-full w-full">
@@ -22,7 +23,7 @@
                     </a>
                 </div>
                 <div class="w-full h-8 px-7 my-6 text-lg flex justify-start items-start">
-                    <h1>Se registrar no evento</h1>
+                    <h2>Se registrar no evento</h2>
                 </div>
                 <div class="px-7 w-full">
 
@@ -75,6 +76,7 @@
             </div>
         </div>
     </main>
+    <x-footer />
 </body>
 </html>
 

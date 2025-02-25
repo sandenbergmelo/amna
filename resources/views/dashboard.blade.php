@@ -13,8 +13,8 @@
 </head>
 
 <body class="w-full h-full flex justify-center items-center flex-col bg-gray-100">
-    <x-dashboard.header />
-    <main class="h-full mx-5 flex justify-start items-start flex-col md:justify-center md:items-center lg:w-amna-app">
+    <x-header />
+    <main class="min-h-[50rem] mx-5 flex justify-start items-start flex-col md:justify-start md:items-center lg:w-amna-app">
         <section class="w-full flex flex-col py-4 lg:w-amna-content-lg md:w-amna-app-content-md">
             <div class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg border-2 border-gray-300">
                 <main class="w-full text-black flex flex-col justify-center items-center">
@@ -183,6 +183,7 @@
             </section>
         @endif
     </main>
+    <x-footer />
 </body>
 
 </html>

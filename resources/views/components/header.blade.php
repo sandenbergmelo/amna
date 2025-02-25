@@ -50,6 +50,15 @@
                             class="hidden absolute right-0 top-full w-48 me-2 mt-2 bg-white border border-gray-300 rounded-md shadow-lg z-10 md:mt-0 md:me-0"
                         >
                             <a href="{{ route('profile.index') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Perfil</a>
+                            <a href="{{ route('dashboard') }}"
+                                class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dashboard</a>
+                            @if (auth()->check())
+                                @if (auth()->user()->isAdmin())
+                                    <a href="{{ route('register') }}"
+                                        class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cadastrar novo
+                                        usuário</a>
+                                @endif
+                            @endif
                             <a href="{{ route('logout') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Desconectar</a>
                         </div>
                     </div>

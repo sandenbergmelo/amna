@@ -13,18 +13,12 @@
 </head>
 
 <body class="w-full h-full flex justify-center items-center flex-col">
+    <x-header />
     <main
-        class="text-black flex justify-start items-center flex-col lg:justify-center lg:w-amna-app md:w-w-amna-app-content-md lg:h-screen">
+        class=" m-4 text-black flex justify-start items-center flex-col lg:justify-start lg:w-amna-app md:w-amna-app-content-md lg:h-screen">
         <div class="w-full py-4 mt-4 rounded-md transition-all duration-200 lg:mt-0 md:w-[25rem] md:shadow-2xl">
             <div class="h-full w-full flex flex-col">
-                <div class="w-full flex flex-col">
-                    <a class="w-full flex justify-start items-center text-7xl text-black font-serif bg-white px-7"
-                        href="{{ route('home') }}">
-                        <img class="h-20" src="{{ asset('logos/logo.png') }}" alt="Logo da associação">
-                        AMNA
-                    </a>
-                </div>
-                <div class="w-full h-8 flex justify-start items-start px-7 my-6 text-lg">
+                <div class="w-full h-8 flex justify-center items-start px-7 my-4 text-lg">
                     <p>Acesse sua conta</p>
                 </div>
                 <div class="w-full px-7">
@@ -87,6 +81,7 @@
             </div>
         </div>
     </main>
+    <x-footer />
 </body>
 
 </html>
