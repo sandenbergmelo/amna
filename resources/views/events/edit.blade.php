@@ -65,7 +65,7 @@
                             <input class="w-full bg-white py-2 px-4 border border-black rounded" type="text" name="location" id="location" value="{{ $event->location }}" placeholder="Localização do evento" required>
                         </div>
                         <div class="w-full flex justify-start flex-col">
-                            <input class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer" type="submit" value="Criar">
+                            <input class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer" type="submit" value="Editar">
                         </div>
                         <div class="text-red-600">
                             @error('title')

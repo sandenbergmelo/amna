@@ -28,7 +28,7 @@
                                 @endif
                             </div>
                             <div>
-                                <main>
+                                <main class="pb-2">
                                     <h3 class="text-lg font-bold">{{ $newsItem->title }}</h3>
                                     <p class="py-2">Postado por: <span class="font-bold">{{ $newsItem->author->name }}</span></p>
                                     <p class="pb-2">Data de criação: {{ \App\Helpers\DateHelper::formatDate($newsItem->created_at) }}</p>
