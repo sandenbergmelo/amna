@@ -81,6 +81,9 @@
         <label for="title">Título</label>
         <input type="text" name="title" id="title" value="{{ $news->title }}">
 
+        <label for="description">Mini descrição</label>
+        <textarea name="description" id="description" rows="3" required>{{ $news->description }}</textarea>
+
         <label for="content">Conteúdo</label>
         <textarea name="content" id="content" cols="30" rows="10">{{ $news->content }}</textarea>
 
