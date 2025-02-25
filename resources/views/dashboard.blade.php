@@ -38,16 +38,10 @@
                 <details class="w-full">
                     <summary class="text-3xl lg:text-4xl font-bold text-[#010360] cursor-pointer">Eventos que você está
                         inscrito</summary>
-                    @if ($user->eventRegistrations->isEmpty())
-                        <p class="py-4 text-red-500">Você não está inscrito em nenhum evento.</p>
-                    @endif
                     @foreach ($user->eventRegistrations as $event)
                         <section
                             class="bg-white flex my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300 cursor-pointer"
                             style="font-size: 1.2em;">
-                            @if ($event->image_path)
-                                <img class="w-[25rem] h-[12.5rem] pe-4" src="{{ asset($event->image_path) }}" alt="{{ $event->title }}">
-                            @endif
                             <div class="flex flex-col">
                                 <h3 class="text-lg font-bold">{{ $event->title }}</h3>
                                 <p>{{ $event->description ?? 'Sem descrição disponível.' }}</p>
@@ -114,9 +108,6 @@
                                 <section
                                     class="bg-white flex flex-row my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300 cursor-pointer"
                                     style="font-size: 1.2em;">
-                                    @if ($newsItem->image_path)
-                                        <img class="w-[25rem] h-[12.5rem] pe-4" src="{{ asset($newsItem->image_path) }}" alt="{{ $newsItem->title }}">
-                                    @endif
                                    <div class="flex flex-col">
                                         <h3 class="text-lg font-bold">{{ $newsItem->title }}</h3>
                                         <p class="py-2"><strong>✍️ Postado por</strong>: {{ $newsItem->author->name }}</p>
@@ -167,9 +158,6 @@
                                 <section
                                     class="bg-white flex my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300 cursor-pointer"
                                     style="font-size: 1.2em;">
-                                    @if ($event->image_path)
-                                        <img class="w-[25rem] h-[12.5rem] pe-4" src="{{ asset($event->image_path) }}" alt="{{ $event->title }}">
-                                    @endif
                                     <div class="flex flex-col">
                                         <h3 class="text-lg font-bold">{{ $event->title }}</h3>
                                         <div class="pt-2">

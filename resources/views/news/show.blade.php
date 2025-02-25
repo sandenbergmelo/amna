@@ -20,16 +20,16 @@
             <main class="h-full flex justify-center items-center flex-col px-5 lg:w-amna-app">
                 <div class="min-h-[50rem] flex flex-col py-4">
                     <section class="bg-white flex flex-col my-6 p-8 rounded-2xl shadow-xl border border-gray-300 lg:w-amna-content-lg md:w-amna-app-content-md" style="font-size: 1.2em;">
-                        <div>
-                            @if ($news->image_path)
-                                <img class="w-full h-52 rounded-lg border mb-4 object-cover" src="{{ asset($news->image_path) }}" alt="{{ $news->title }}">
-                            @endif
-                            <p class="text-lg text-gray-700 pb-4">{{ $news->description }}</p>
-                        </div>
                         <div class="w-full flex flex-col gap-4">
                             <header>
                                 <h1 class="text-4xl font-bold text-[#010360] pb-2">{{ $news->title }}</h1>
-                                <p class="text-gray-600">📅 <strong>Data de criação:</strong> {{ \App\Helpers\DateHelper::formatDate($news->created_at) }}</p>
+                                <div>
+                                    @if ($news->image_path)
+                                        <img class="w-full h-52 rounded-lg border mb-4 object-cover" src="{{ asset($news->image_path) }}" alt="{{ $news->title }}">
+                                    @endif
+                                    <p class="text-lg text-gray-700 pb-4">{{ $news->description }}</p>
+                                    <p class="text-gray-600 text-sm">📅 <strong>Data de criação:</strong> {{ \App\Helpers\DateHelper::formatDate($news->created_at) }}</p>
+                                </div>
                             </header>
                             <main class="text-gray-800 leading-relaxed">
                                 <section>

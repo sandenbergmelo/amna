@@ -20,14 +20,15 @@
             <main class="h-full flex justify-center items-center flex-col px-5 lg:w-amna-app">
                 <div class="min-h-[50rem] flex flex-col py-4">
                     <section class="bg-white flex flex-col my-6 p-8 rounded-2xl shadow-xl border border-gray-300 lg:w-amna-content-lg md:w-amna-app-content-md" style="font-size: 1.2em;">
-                        <div>
-                            @if ($event->image_path)
-                                <img class="w-full h-52 rounded-lg border mb-4 object-cover" src="{{ asset($event->image_path) }}" alt="{{ $event->title }}">
-                            @endif
-                        </div>
                         <div class="w-full flex flex-col gap-4">
                             <header>
                                 <h1 class="text-4xl font-bold text-[#010360] pb-2">{{ $event->title }}</h1>
+                                <div>
+                                    @if ($event->image_path)
+                                        <img class="w-full h-52 rounded-lg border mb-4 object-cover" src="{{ asset($event->image_path) }}" alt="{{ $event->title }}">
+                                    @endif
+                                    <h3 class="text-lg text-gray-700 pb-4">{{ $event->description }}</h3>
+                                </div>
                                 <p class="text-gray-600">📅 <strong>De:</strong> {{ \Carbon\Carbon::parse($event->start_date)->format('d/m/Y') }} até
                                     {{ \Carbon\Carbon::parse($event->end_date)->format('d/m/Y') }}
                                 </p>
@@ -35,7 +36,6 @@
                                     {{ \Carbon\Carbon::parse($event->end_time)->format('H:i') }}
                                 </p>
                                 <h4 class="text-gray-700">📍 <strong>Local:</strong> {{ $event->location }}</h4>
-                                <h3 class="text-lg text-gray-700 pb-4">{{ $event->description }}</h3>
                             </header>
                             <main class="text-gray-800 leading-relaxed">
                                 <section>

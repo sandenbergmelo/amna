@@ -17,8 +17,8 @@
     </head>
     <body class="w-full h-full flex justify-center items-center flex-col bg-gray-100">
         <x-header/>
-            <main class="h-full flex justify-center items-center flex-col px-5 lg:w-amna-app">
-                <div class="min-h-[50rem] flex flex-col py-4 lg:w-amna-content-lg md:w-amna-app-content-md">
+            <main class="w-full h-full flex justify-center items-center flex-col px-5 lg:w-amna-app">
+                <div class="w-full min-h-[50rem] flex flex-col py-4 lg:w-amna-content-lg md:w-amna-app-content-md">
                     <h2 class="text-3xl lg:text-4xl font-bold text-[#010360] ">Sobre Nós</h2>
                     <section class="bg-white flex my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300" style="font-size: 1.2em;">
                         <p></p>

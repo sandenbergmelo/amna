@@ -22,11 +22,6 @@
                     <h2 class="text-3xl lg:text-4xl font-bold text-[#010360] ">Últimas Notícias</h2>
                     @foreach ($news as $newsItem)
                         <section class="bg-white flex my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300" style="font-size: 1.2em;">
-                            <div>
-                                @if ($newsItem->image_path)
-                                    <img class="w-[25rem] h-[12.5em] rounded-lg" src="{{ asset($newsItem->image_path) }}" alt="{{ $newsItem->title }}">
-                                @endif
-                            </div>
                             <div class="ms-2">
                                 <main class="pb-2">
                                     <h3 class="text-lg font-bold">{{ $newsItem->title }}</h3>
