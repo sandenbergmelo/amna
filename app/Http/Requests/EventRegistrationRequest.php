@@ -30,10 +30,10 @@ class EventRegistrationRequest extends FormRequest
     public function messages()
     {
         return [
-            'registration_date.required' => 'The registration date field is required.',
-            'registration_date.date' => 'The registration date field must be a date.',
-            'status_presence.required' => 'The status presence field is required.',
-            'status_presence.in' => 'The status presence field must be Confirmed or Pending.',
+            'registration_date.required' => 'O campo data de registro é obrigatório.',
+            'registration_date.date' => 'O campo data de registro deve ser uma data.',
+            'status_presence.required' => 'O campo status de presença é obrigatório.',
+            'status_presence.in' => 'O campo status de presença deve ser Confirmado ou Pendente.',
         ];
     }
 }

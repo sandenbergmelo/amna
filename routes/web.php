@@ -47,7 +47,9 @@ Route::get('/dashboard', [DashBoardController::class, 'index'])
 
 Route::resource('news', NewsController::class)
     ->except(['show', 'edit', 'update', 'delete'])
-    ->middleware('auth');
+    ->middleware('auth')
+    ->withoutMiddlewareFor('index', 'auth');
+
 
 Route::get('/news/edit/{news}', [NewsController::class, 'edit'])
     ->name('news.edit')
@@ -63,7 +65,8 @@ Route::get('/news/delete/{news}', [NewsController::class, 'delete'])
 
 Route::resource('events', EventController::class)
     ->except(['show', 'edit', 'update', 'delete'])
-    ->middleware('auth');
+    ->middleware('auth')
+    ->withoutMiddlewareFor('index', 'auth');
 
 Route::get('/events/edit/{event}', [EventController::class, 'edit'])
     ->name('events.edit')
@@ -88,3 +91,9 @@ Route::get('/event-registration/create/{event}', [EventRegistrationController::c
 Route::put('/event-registration/update/{id}', [EventRegistrationController::class, 'update'])
     ->name('event-registration.update')
     ->middleware('auth');
+
+Route::get('/about', [HomeController::class, 'about'])
+    ->name('about');
+
+Route::get('/sobre', [HomeController::class, 'about'])
+    ->name('about');

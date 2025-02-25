@@ -14,6 +14,7 @@ class News extends Model
 
     protected $fillable = [
         'title',
+        'description',
         'content',
         'external_link',
         'image_path',

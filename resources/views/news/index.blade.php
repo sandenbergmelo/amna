@@ -16,13 +16,13 @@
                 <section style="border: 1px solid black; padding: 10px; margin-top: 10px; width: 50%;">
                     <h3>{{ $newsItem->title }}</h3>
                     <p>Postado por: {{ $newsItem->author->name }}</p>
-                    <p>Data de criação: {{ \App\Helpers\DateHelper::formatDate($newsItem->created_at) }}</p>
+                    <p>Data de criação: {{ \App\Helpers\DateHelper::formatDateTime($newsItem->created_at) }}</p>
 
                     @if ($newsItem->image_path)
                         <img src="{{ asset($newsItem->image_path) }}" alt="{{ $newsItem->title }}"
                             style="max-width: 300px;">
                     @endif
-                    <p>{{ $newsItem->content }}</p>
+                    <p>{{ $newsItem->description }}</p>
                 </section>
             @endforeach
         </ul>
