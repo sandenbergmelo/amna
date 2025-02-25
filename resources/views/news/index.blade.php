@@ -22,7 +22,7 @@
                         <img src="{{ asset($newsItem->image_path) }}" alt="{{ $newsItem->title }}"
                             style="max-width: 300px;">
                     @endif
-                    <p>{{ $newsItem->content }}</p>
+                    <p>{{ $newsItem->description }}</p>
                 </section>
             @endforeach
         </ul>
