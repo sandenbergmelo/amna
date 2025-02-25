@@ -82,10 +82,13 @@
         <label for="title">Título</label>
         <input type="text" name="title" id="title" required>
 
-        <label for="content">Conteúdo</label>
-        <textarea name="content" id="content" cols="30" rows="10" required></textarea>
+        <label for="description">Mini descrição</label>
+        <textarea name="description" id="description" rows="3" required></textarea>
 
-        <label for="external_link">Link externo</label>
+        <label for="content">Conteúdo</label>
+        <textarea name="content" id="content" rows="15" required></textarea>
+
+        <label for="external_link">Link externo (opcional)</label>
         <input type="url" name="external_link" id="external_link">
 
         <label for="image">Imagem relacionada (opcional)</label>

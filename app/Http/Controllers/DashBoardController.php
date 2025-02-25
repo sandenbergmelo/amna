@@ -11,7 +11,7 @@ class DashBoardController
     public function index()
     {
         $user = Auth::user();
-        $events = Event::all();
+        $events = Event::orderBy('start_date', 'desc')->paginate(10);
 
         return view('dashboard', compact('user', 'events'));
     }

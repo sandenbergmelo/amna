@@ -23,6 +23,7 @@ class NewsRequest extends FormRequest
     {
         return [
             'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string'],
             'content' => ['required', 'string'],
             'external_link' => ['nullable', 'url'],
             'image' => ['nullable', 'image', 'max:5120', 'mimes:jpeg,png,jpg'],
@@ -35,6 +36,8 @@ class NewsRequest extends FormRequest
             'title.required' => 'O campo título é obrigatório',
             'title.string' => 'O campo título deve ser uma string',
             'title.max' => 'O campo título deve ter no máximo 255 caracteres',
+            'description.required' => 'O campo descrição é obrigatório',
+            'description.string' => 'O campo descrição deve ser uma string',
             'content.required' => 'O campo conteúdo é obrigatório',
             'content.string' => 'O campo conteúdo deve ser uma string',
             'external_link.url' => 'O campo link externo deve ser uma URL válida',
