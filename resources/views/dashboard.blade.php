@@ -111,6 +111,8 @@
                                     class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300"
                                     style="font-size: 1.2em;">
                                     <h3 class="text-lg font-bold">{{ $newsItem->title }}</h3>
+                                    <a href="{{ route('news.show', ['news' => $newsItem]) }}" class="text-blue-500 underline">Abrir
+                                        notícia</a>
                                     <p class="py-2">Postado por: {{ $newsItem->author->name }}</p>
                                     <p>Data de criação:
                                         {{ \App\Helpers\DateHelper::formatDateTime($newsItem->created_at) }}</p>

@@ -46,7 +46,7 @@ Route::get('/dashboard', [DashBoardController::class, 'index'])
     ->middleware('auth');
 
 Route::resource('news', NewsController::class)
-    ->except(['show', 'edit', 'update', 'delete'])
+    ->except(['edit', 'update', 'delete'])
     ->middleware('auth')
     ->withoutMiddlewareFor('index', 'auth');
 
