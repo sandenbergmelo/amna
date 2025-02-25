@@ -34,12 +34,16 @@
                     <div>
                         <header>
                             <h2 class="text-lg font-bold">{{ $event->title ?? 'Evento Sem Título' }}</h2>
+                            <div class="m-2">
+                                <h4>Início: {{ \App\Helpers\DateHelper::formatDate($event->start_date) }}</h4>
+                                <h4>Fim: {{ \App\Helpers\DateHelper::formatDate($event->end_date) }}</h4>
+                            </div>
                             <p>{{ $event->description ?? 'Sem descrição disponível.' }}</p>
                         </header>
                         <footer class="mt-3">
                             @if (auth()->check())
                                 @if ($event->isUserSubscribed(auth()->user()))
-                                    <p>Já inscrito</p>
+                                    <p class="cursor-default"><strong>Já inscrito</strong></p>
                                 @else
                                     <a class="text-blue-400 hover:text-blue-300 underline transition"
                                         href="{{ route('event-registration.create', ['event' => $event]) }}">Participar</a>

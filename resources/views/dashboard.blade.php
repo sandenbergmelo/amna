@@ -160,8 +160,10 @@
                                     class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300"
                                     style="font-size: 1.2em;">
                                     <h3 class="text-lg font-bold">{{ $event->title }}</h3>
-                                    <h4>Início: {{ \App\Helpers\DateHelper::formatDate($event->start_date) }}</h4>
-                                    <h4>Fim: {{ \App\Helpers\DateHelper::formatDate($event->end_date) }}</h4>
+                                    <div class="m-2">
+                                        <h4>Início: {{ \App\Helpers\DateHelper::formatDate($event->start_date) }}</h4>
+                                        <h4>Fim: {{ \App\Helpers\DateHelper::formatDate($event->end_date) }}</h4>
+                                    </div>
                                     @if ($event->image_path)
                                         <img src="{{ asset($event->image_path) }}" alt="{{ $event->title }}"
                                             style="max-width: 300px;">
