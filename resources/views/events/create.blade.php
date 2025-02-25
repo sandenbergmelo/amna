@@ -37,11 +37,11 @@
                         </div>
                         <div class="w-full py-2">
                             <label for="description">Mini Descrição</label>
-                            <textarea class="w-full bg-white py-2 px-4 border border-black rounded" name="description" id="description" rows="3" required></textarea>
+                            <textarea class="w-full bg-white py-2 px-4 border border-black rounded" name="description" id="description" rows="3" placeholder="Mini descrição do evento" required></textarea>
                         </div>
                         <div class="w-full py-2">
                             <label for="content">Conteúdo</label>
-                            <textarea class="w-full bg-white py-2 px-4 border border-black rounded" name="content" id="content" rows="10" required></textarea>
+                            <textarea class="w-full bg-white py-2 px-4 border border-black rounded" name="content" id="content" rows="10" placeholder="Conteúdo do evento" required></textarea>
                         </div>
                         <div class="w-full py-2">
                             <label for="start_date">Data de início</label>
@@ -61,7 +61,7 @@
                         </div>
                         <div class="w-full py-2">
                             <label for="location">Localização</label>
-                            <input class="w-full bg-white py-2 px-4 border border-black rounded" type="text" name="location" id="location" required>
+                            <input class="w-full bg-white py-2 px-4 border border-black rounded" type="text" name="location" id="location" placeholder="Localização do evento" required>
                         </div>
                         <div class="w-full flex justify-start flex-col">
                             <input class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer" type="submit" value="Criar">
