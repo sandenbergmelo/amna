@@ -42,6 +42,15 @@
 
     <h4>Local: {{ $event->location }}</h4>
 
+    @if (auth()->check())
+        @if ($event->isUserSubscribed(auth()->user()))
+            <p class="cursor-default"><strong>Já inscrito</strong></p>
+        @else
+            <a class="text-blue-400 hover:text-blue-300 underline transition"
+                href="{{ route('event-registration.create', ['event' => $event]) }}">Participar</a>
+        @endif
+    @endif
+
     @if ($event->image_path)
         <img src="{{ asset($event->image_path) }}" alt="{{ $event->title }}" style="max-width: 50%;">
     @endif
