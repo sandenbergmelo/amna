@@ -70,7 +70,8 @@
                                 });
                             });
                         </script>
-                    </form>  
+                    </form> 
+                </div> 
             </div>
         </div>
     </main>

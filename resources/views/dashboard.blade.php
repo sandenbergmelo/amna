@@ -110,27 +110,28 @@
                         <section>
                             @foreach ($user->news as $newsItem)
                                 <section
-                                    class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300 cursor-pointer"
+                                    class="bg-white flex flex-row my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300 cursor-pointer"
                                     style="font-size: 1.2em;">
-                                    <h3 class="text-lg font-bold">{{ $newsItem->title }}</h3>
-                                    <p class="py-2">Postado por: {{ $newsItem->author->name }}</p>
-                                    <p>Data de criação:
-                                        {{ \App\Helpers\DateHelper::formatDateTime($newsItem->created_at) }}</p>
-
                                     @if ($newsItem->image_path)
-                                        <img src="{{ asset($newsItem->image_path) }}" alt="{{ $newsItem->title }}"
-                                            style="max-width: 300px;">
+                                        <img class="w-[25rem] h-[12.5rem] pe-4" src="{{ asset($newsItem->image_path) }}" alt="{{ $newsItem->title }}">
                                     @endif
-                                    <p class="py-2">{{ $newsItem->description }}</p>
-                                    <a href="{{ route('news.show', ['news' => $newsItem]) }}"
-                                        class="text-blue-500 underline">Abrir
-                                        notícia</a>
-                                    <div class="w-full flex justify-start">
-                                        <a class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 me-4 border rounded transition duration-300 cursor-pointer"
-                                            href="{{ route('news.edit', ['news' => $newsItem]) }}">Editar</a>
-                                        <a class="bg-red-700 hover:bg-red-600 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer"
-                                            href="{{ route('news.delete', ['news' => $newsItem->id]) }}">Deletar</a>
-                                    </div>
+                                   <div class="flex flex-col">
+                                        <h3 class="text-lg font-bold">{{ $newsItem->title }}</h3>
+                                        <p class="py-2">Postado por: {{ $newsItem->author->name }}</p>
+                                        <p>Data de criação:
+                                            {{ \App\Helpers\DateHelper::formatDateTime($newsItem->created_at) }}</p>
+
+                                        <p class="py-2">{{ $newsItem->description }}</p>
+                                        <a href="{{ route('news.show', ['news' => $newsItem]) }}"
+                                            class="text-blue-500 underline">Abrir
+                                            notícia</a>
+                                        <div class="w-full flex justify-start">
+                                            <a class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 me-4 border rounded transition duration-300 cursor-pointer"
+                                                href="{{ route('news.edit', ['news' => $newsItem]) }}">Editar</a>
+                                            <a class="bg-red-700 hover:bg-red-600 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer"
+                                                href="{{ route('news.delete', ['news' => $newsItem->id]) }}">Deletar</a>
+                                        </div>
+                                   </div>
                                 </section>
                             @endforeach
                         </section>
@@ -162,26 +163,27 @@
                         <section>
                             @foreach ($events as $event)
                                 <section
-                                    class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300 cursor-pointer"
+                                    class="bg-white flex my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300 cursor-pointer"
                                     style="font-size: 1.2em;">
-                                    <h3 class="text-lg font-bold">{{ $event->title }}</h3>
-                                    <div class="pt-2">
-                                        <h4>Início: {{ \App\Helpers\DateHelper::formatDate($event->start_date) }}</h4>
-                                        <h4>Fim: {{ \App\Helpers\DateHelper::formatDate($event->end_date) }}</h4>
-                                    </div>
-                                    <p class="pt-1">Local: {{ $event->location }}</p>
                                     @if ($event->image_path)
-                                        <img src="{{ asset($event->image_path) }}" alt="{{ $event->title }}"
-                                            style="max-width: 300px;">
+                                        <img class="w-[25rem] h-[12.5rem] pe-4" src="{{ asset($event->image_path) }}" alt="{{ $event->title }}">
                                     @endif
-                                    <p class="py-2">{{ $event->description }}</p>
-                                    <a href="{{ route('events.show', ['event' => $event]) }}"
-                                        class="text-blue-400 hover:text-blue-300 underline transition">Abrir evento</a>
-                                    <div class="w-full flex justify-start ">
-                                        <a class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 me-4 border rounded transition duration-300"
-                                            href="{{ route('events.edit', ['event' => $event]) }}">Editar</a>
-                                        <a class="bg-red-700 hover:bg-red-600 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300"
-                                            href="{{ route('events.delete', ['event' => $event]) }}">Deletar</a>
+                                    <div class="flex flex-col">
+                                        <h3 class="text-lg font-bold">{{ $event->title }}</h3>
+                                        <div class="pt-2">
+                                            <h4>Início: {{ \App\Helpers\DateHelper::formatDate($event->start_date) }}</h4>
+                                            <h4>Fim: {{ \App\Helpers\DateHelper::formatDate($event->end_date) }}</h4>
+                                        </div>
+                                        <p class="pt-1">Local: {{ $event->location }}</p>
+                                        <p class="py-2">{{ $event->description }}</p>
+                                        <a href="{{ route('events.show', ['event' => $event]) }}"
+                                            class="text-blue-400 hover:text-blue-300 underline transition">Abrir evento</a>
+                                        <div class="w-full flex justify-start ">
+                                            <a class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 me-4 border rounded transition duration-300"
+                                                href="{{ route('events.edit', ['event' => $event]) }}">Editar</a>
+                                            <a class="bg-red-700 hover:bg-red-600 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300"
+                                                href="{{ route('events.delete', ['event' => $event]) }}">Deletar</a>
+                                        </div>
                                     </div>
                                 </section>
                             @endforeach

@@ -24,7 +24,7 @@
                         <section class="bg-white flex my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300" style="font-size: 1.2em;">
                             <div>
                                 @if ($newsItem->image_path)
-                                    <img class="pe-4" src="{{ asset($newsItem->image_path) }}" alt="{{ $newsItem->title }}">
+                                    <img class="w-[25rem] h-[12.5em] pe-2" src="{{ asset($newsItem->image_path) }}" alt="{{ $newsItem->title }}">
                                 @endif
                             </div>
                             <div>

@@ -2,7 +2,7 @@
     <div class="w-amna-app text-white">
         <div class="flex flex-col pb-8 lg:grid lg:grid-cols-3 lg:py-8">
             <div class="hidden lg:flex">
-                <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati tenetur incidunt possimus illum quia enim nemo magni animi officia quibusdam, debitis corporis numquam delectus recusandae, sapiente nam aliquid neque reprehenderit.</p>
+                <p class="text-justify"></p>
             </div>
             <div class="flex justify-center items-start my-4">
                 <a class="lg:text-7xl font-serif text-white px-7 flex" href="{{ route('home') }}">

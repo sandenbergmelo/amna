@@ -24,30 +24,39 @@
             <div class="w-full flex flex-col justify-between text-justify my-1 px-5 lg:flex-row md:flex-col lg:my-6 lg:px-0 lg:w-amna-app md:w-w-amna-app-content-md">
                 <div class="w-full h-full bg-white my-6 p-5 rounded-[0.625rem] lg:w-amna-content-lg">
                     <h2 class="text-3xl lg:text-4xl font-bold text-[#010360] pb-4">Bem Vindo a AMNA</h2>
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, dolorum perspiciatis voluptate soluta tempora corrupti sapiente odit! Perferendis, rem cupiditate facere recusandae necessitatibus cum consequuntur officiis ducimus tenetur sit quae?</p>
-
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, asperiores obcaecati nostrum corrupti deserunt voluptas est eos officiis at, consectetur autem? Cupiditate accusantium officiis voluptates expedita necessitatibus, voluptas adipisci! Veritatis!</p>
-
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores possimus perspiciatis quo perferendis voluptates, voluptatibus esse libero tenetur nemo aperiam officia debitis quos maxime ea voluptas, pariatur consequatur! Nesciunt, unde.</p>
-
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, dolorum perspiciatis voluptate soluta tempora corrupti sapiente odit! Perferendis, rem cupiditate facere recusandae necessitatibus cum consequuntur officiis ducimus tenetur sit quae?</p>
-
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, asperiores obcaecati nostrum corrupti deserunt voluptas est eos officiis at, consectetur autem? Cupiditate accusantium officiis voluptates expedita necessitatibus, voluptas adipisci! Veritatis!</p>
-
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores possimus perspiciatis quo perferendis voluptates, voluptatibus esse libero tenetur nemo aperiam officia debitis quos maxime ea voluptas, pariatur consequatur! Nesciunt, unde.</p>
-
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa, dolorum perspiciatis voluptate soluta tempora corrupti sapiente odit! Perferendis, rem cupiditate facere recusandae necessitatibus cum consequuntur officiis ducimus tenetur sit quae?</p>
-
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Atque, asperiores obcaecati nostrum corrupti deserunt voluptas est eos officiis at, consectetur autem? Cupiditate accusantium officiis voluptates expedita necessitatibus, voluptas adipisci! Veritatis!</p>
-
-                    <p class="mb-4">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Asperiores possimus perspiciatis quo perferendis voluptates, voluptatibus esse libero tenetur nemo aperiam officia debitis quos maxime ea voluptas, pariatur consequatur! Nesciunt, unde.</p>
+                    <p></p>
                 </div>
                 <div class="flex flex-col w-full lg:w-[31.25rem] md:w-full">
                     <div class="bg-white my-1 p-5 rounded-[0.625rem] lg:my-6">
-                        <h2 class="text-3xl lg:text-4xl font-bold text-[#010360] ">Últimos Eventos</h2>
+                        <h2 class="text-3xl lg:text-4xl font-bold text-[#010360] pb-2">Últimos Eventos</h2>
+                        @foreach ($events as $event)
+                            <section class="pb-2">
+                                <div>
+                                    <header>
+                                        <h2 class="text-lg font-bold pb-1">{{ $event->title ?? 'Evento Sem Título' }}</h2>
+                                    </header>
+                                    <footer class="pb-2">
+                                        <a href="{{ route('events.show', ['event' => $event]) }}"
+                                            class="text-blue-400 hover:text-blue-300 underline transition">Abrir evento</a>
+                                    </footer>
+                                </div>
+                            </section>
+                        @endforeach
                     </div>
                     <div class="bg-white my-6 p-5 rounded-[0.625rem]">
                         <h2 class="text-3xl lg:text-4xl font-bold text-[#010360]">Últimas Notícias</h2>
+                        @foreach ($news as $newsItem)
+                        <section class="pb-2">
+                            <div>
+                                <header>
+                                    <h3 class="text-lg font-bold pb-1">{{ $newsItem->title }}</h3>
+                                </header>
+                                <footer class="pb-2">
+                                    <a class="text-blue-400 hover:text-blue-300 underline transition pt-2" href="{{ route('news.show', ['news' => $newsItem]) }}">Abrir notícia</a>
+                                </footer>
+                            </div>
+                        </section>
+                    @endforeach
                     </div>
                 </div>
             </div>
