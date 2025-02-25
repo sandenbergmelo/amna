@@ -139,6 +139,11 @@ class EventController
         return redirect()->route('dashboard')->withSuccess('Evento atualizado com sucesso');
     }
 
+    public function show(Event $event)
+    {
+        return view('events.show', compact('event'));
+    }
+
     public function delete(Event $event)
     {
         /**  @var User $user */

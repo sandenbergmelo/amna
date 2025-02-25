@@ -89,6 +89,11 @@ class NewsController
         return view('news.edit', compact('news'));
     }
 
+    public function show(News $news)
+    {
+        return view('news.show', compact('news'));
+    }
+
     /**
      * Update the specified resource in storage.
      */

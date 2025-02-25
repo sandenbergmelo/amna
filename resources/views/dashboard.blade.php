@@ -32,12 +32,12 @@
         </section>
         <section>
             <div class="flex flex-col py-4 lg:w-amna-content-lg md:w-amna-app-content-md">
+                @session('success')
+                    <p class="text-green-400 py-4">{{ session('success') }}</p>
+                @endsession
                 <details class="w-full">
                     <summary class="text-3xl lg:text-4xl font-bold text-[#010360] cursor-pointer">Eventos que você está
                         inscrito</summary>
-                    @session('success')
-                        <p class="text-green-400 py-4">{{ session('success') }}</p>
-                    @endsession
                     @if ($user->eventRegistrations->isEmpty())
                         <p>Você não está inscrito em nenhum evento</p>
                     @endif
@@ -46,6 +46,8 @@
                             class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300"
                             style="font-size: 1.2em;">
                             <h3 class="text-lg font-bold">{{ $event->title }}</h3>
+                            <a href="{{ route('events.show', ['event' => $event]) }}"
+                                class="text-blue-400 hover:text-blue-300 underline transition">Abrir evento</a>
                             @if ($event->image_path)
                                 <img class="pe-4" src="{{ asset($event->image_path) }}" alt="{{ $event->title }}">
                             @endif
@@ -87,14 +89,14 @@
         @if ($user->isAdmin())
             <section>
                 <div class="flex flex-col py-4 lg:w-amna-content-lg md:w-amna-app-content-md">
+                    @error('create_news')
+                        <p>{{ $message }}</p>
+                    @enderror
+                    @error('edit_news')
+                        <p>{{ $message }}</p>
+                    @enderror
                     <details class="w-full">
                         <summary class="text-3xl lg:text-4xl font-bold text-[#010360] cursor-pointer">Notícias</summary>
-                        @error('create_news')
-                            <p>{{ $message }}</p>
-                        @enderror
-                        @error('edit_news')
-                            <p>{{ $message }}</p>
-                        @enderror
                         <div class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg border-2 border-gray-300">
                             <div class="text-black w-full">
                                 <header class="mb-4">
@@ -111,6 +113,9 @@
                                     class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300"
                                     style="font-size: 1.2em;">
                                     <h3 class="text-lg font-bold">{{ $newsItem->title }}</h3>
+                                    <a href="{{ route('news.show', ['news' => $newsItem]) }}"
+                                        class="text-blue-500 underline">Abrir
+                                        notícia</a>
                                     <p class="py-2">Postado por: {{ $newsItem->author->name }}</p>
                                     <p>Data de criação:
                                         {{ \App\Helpers\DateHelper::formatDateTime($newsItem->created_at) }}</p>
@@ -136,14 +141,14 @@
             </section>
             <section>
                 <div class="flex flex-col py-4 lg:w-amna-content-lg md:w-amna-app-content-md">
+                    @error('create_event')
+                        <p>{{ $message }}</p>
+                    @enderror
+                    @error('edit_event')
+                        <p>{{ $message }}</p>
+                    @enderror
                     <details class="w-full">
                         <summary class="text-3xl lg:text-4xl font-bold text-[#010360] cursor-pointer">Eventos</summary>
-                        @error('create_event')
-                            <p>{{ $message }}</p>
-                        @enderror
-                        @error('edit_event')
-                            <p>{{ $message }}</p>
-                        @enderror
                         <div class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg border-2 border-gray-300">
                             <div class="text-black w-full">
                                 <header class="mb-4">
@@ -160,10 +165,13 @@
                                     class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300"
                                     style="font-size: 1.2em;">
                                     <h3 class="text-lg font-bold">{{ $event->title }}</h3>
+                                    <a href="{{ route('events.show', ['event' => $event]) }}"
+                                        class="text-blue-400 hover:text-blue-300 underline transition">Abrir evento</a>
                                     <div class="m-2">
                                         <h4>Início: {{ \App\Helpers\DateHelper::formatDate($event->start_date) }}</h4>
                                         <h4>Fim: {{ \App\Helpers\DateHelper::formatDate($event->end_date) }}</h4>
                                     </div>
+                                    <p class="py-2">Local: {{ $event->location }}</p>
                                     @if ($event->image_path)
                                         <img src="{{ asset($event->image_path) }}" alt="{{ $event->title }}"
                                             style="max-width: 300px;">

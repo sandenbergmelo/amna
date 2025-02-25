@@ -15,6 +15,7 @@
             @foreach ($news as $newsItem)
                 <section style="border: 1px solid black; padding: 10px; margin-top: 10px; width: 50%;">
                     <h3>{{ $newsItem->title }}</h3>
+                    <a href="{{ route('news.show', ['news' => $newsItem]) }}">Abrir notícia</a>
                     <p>Postado por: {{ $newsItem->author->name }}</p>
                     <p>Data de criação: {{ \App\Helpers\DateHelper::formatDateTime($newsItem->created_at) }}</p>
 
