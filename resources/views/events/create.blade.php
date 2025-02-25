@@ -65,11 +65,27 @@
         <p>{{ $message }}</p>
     @enderror
 
+    @error('content')
+        <p>{{ $message }}</p>
+    @enderror
+
     @error('start_date')
         <p>{{ $message }}</p>
     @enderror
 
     @error('end_date')
+        <p>{{ $message }}</p>
+    @enderror
+
+    @error('start_time')
+        <p>{{ $message }}</p>
+    @enderror
+
+    @error('end_time')
+        <p>{{ $message }}</p>
+    @enderror
+
+    @error('location')
         <p>{{ $message }}</p>
     @enderror
 
@@ -86,14 +102,26 @@
         <label for="title">Título</label>
         <input type="text" name="title" id="title" required>
 
-        <label for="description">Descrição</label>
-        <textarea name="description" id="description" cols="30" rows="10" required></textarea>
+        <label for="description">Mini Descrição</label>
+        <textarea name="description" id="description" rows="3" required></textarea>
+
+        <label for="content">Conteúdo</label>
+        <textarea name="content" id="content" rows="10" required></textarea>
 
         <label for="start_date">Data de início</label>
         <input type="date" name="start_date" id="start_date" required>
 
         <label for="end_date">Data de término</label>
         <input type="date" name="end_date" id="end_date" required>
+
+        <label for="start_time">Hora de início</label>
+        <input type="time" name="start_time" id="start_time" required>
+
+        <label for="end_time">Hora de término</label>
+        <input type="time" name="end_time" id="end_time" required>
+
+        <label for="location">Localização</label>
+        <input type="text" name="location" id="location" required>
 
         <label for="image">Imagem relacionada (opcional)</label>
         <input type="file" name="image" id="image" accept="image/*">

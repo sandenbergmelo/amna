@@ -164,6 +164,7 @@
                                         <h4>Início: {{ \App\Helpers\DateHelper::formatDate($event->start_date) }}</h4>
                                         <h4>Fim: {{ \App\Helpers\DateHelper::formatDate($event->end_date) }}</h4>
                                     </div>
+                                    <p class="py-2">Local: {{ $event->location }}</p>
                                     @if ($event->image_path)
                                         <img src="{{ asset($event->image_path) }}" alt="{{ $event->title }}"
                                             style="max-width: 300px;">
