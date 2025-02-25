@@ -63,7 +63,8 @@ Route::get('/news/delete/{news}', [NewsController::class, 'delete'])
 
 Route::resource('events', EventController::class)
     ->except(['show', 'edit', 'update', 'delete'])
-    ->middleware('auth');
+    ->middleware('auth')
+    ->withoutMiddlewareFor('index', 'auth');
 
 Route::get('/events/edit/{event}', [EventController::class, 'edit'])
     ->name('events.edit')

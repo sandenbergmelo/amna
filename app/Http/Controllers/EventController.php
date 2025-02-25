@@ -12,6 +12,7 @@ class EventController
     public function index()
     {
         $events = Event::orderBy('start_date', 'desc')->paginate(10);
+        // dd($events);
         return view('events.index', compact('events'));
     }
 
