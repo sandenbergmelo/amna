@@ -34,9 +34,9 @@
     <h1>{{ $news->title }}</h1>
     <p>Publicado por {{ $news->author->name }} em {{ $news->created_at->format('d/m/Y à\s H:i') }}</p>
 
-        @if ($news->image_path)
-            <img src="{{ asset($news->image_path) }}" alt="{{ $news->title }}" style="max-width: 50%;">
-        @endif
+    @if ($news->image_path)
+        <img src="{{ asset($news->image_path) }}" alt="{{ $news->title }}" style="max-width: 50%;">
+    @endif
 
     <h3>{{ $news->description }}</h3>
 

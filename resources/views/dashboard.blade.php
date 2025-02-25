@@ -46,6 +46,8 @@
                             class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300"
                             style="font-size: 1.2em;">
                             <h3 class="text-lg font-bold">{{ $event->title }}</h3>
+                            <a href="{{ route('events.show', ['event' => $event]) }}"
+                                class="text-blue-400 hover:text-blue-300 underline transition">Abrir evento</a>
                             @if ($event->image_path)
                                 <img class="pe-4" src="{{ asset($event->image_path) }}" alt="{{ $event->title }}">
                             @endif
@@ -111,7 +113,8 @@
                                     class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300"
                                     style="font-size: 1.2em;">
                                     <h3 class="text-lg font-bold">{{ $newsItem->title }}</h3>
-                                    <a href="{{ route('news.show', ['news' => $newsItem]) }}" class="text-blue-500 underline">Abrir
+                                    <a href="{{ route('news.show', ['news' => $newsItem]) }}"
+                                        class="text-blue-500 underline">Abrir
                                         notícia</a>
                                     <p class="py-2">Postado por: {{ $newsItem->author->name }}</p>
                                     <p>Data de criação:
@@ -162,6 +165,8 @@
                                     class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300"
                                     style="font-size: 1.2em;">
                                     <h3 class="text-lg font-bold">{{ $event->title }}</h3>
+                                    <a href="{{ route('events.show', ['event' => $event]) }}"
+                                        class="text-blue-400 hover:text-blue-300 underline transition">Abrir evento</a>
                                     <div class="m-2">
                                         <h4>Início: {{ \App\Helpers\DateHelper::formatDate($event->start_date) }}</h4>
                                         <h4>Fim: {{ \App\Helpers\DateHelper::formatDate($event->end_date) }}</h4>
