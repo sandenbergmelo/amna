@@ -91,3 +91,9 @@ Route::get('/event-registration/create/{event}', [EventRegistrationController::c
 Route::put('/event-registration/update/{id}', [EventRegistrationController::class, 'update'])
     ->name('event-registration.update')
     ->middleware('auth');
+
+Route::get('/about', [HomeController::class, 'about'])
+    ->name('about');
+
+Route::get('/sobre', [HomeController::class, 'about'])
+    ->name('about');

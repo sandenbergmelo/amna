@@ -63,15 +63,15 @@
             <a href="{{ route('home') }}" class="text-base p-2 hover:text-blue-400 hover:scale-110 transition-all">INÍCIO</a>
             <a href="{{ route('events.index') }}" class="p-2 hover:text-blue-400 hover:scale-110 transition-all">EVENTOS</a>
             <a href="{{ route('news.index') }}" class="p-2 hover:text-blue-400 hover:scale-110 transition-all">NOTÍCIAS</a>
-            <a href="" class="p-2 hover:text-blue-400 hover:scale-110 transition-all">SOBRE</a>
+            <a href="{{ route('about') }}" class="p-2 hover:text-blue-400 hover:scale-110 transition-all">SOBRE</a>
         </nav>
-        
+
         <!-- Navbar para mobile (inicialmente escondida) -->
         <nav class="md:hidden hidden flex-col bg-amna-primary-100 p-1" id="mobile-nav">
             <a href="{{ route('home') }}" class="text-base block p-2 hover:text-blue-400 hover:scale-105 transition-all">INÍCIO</a>
             <a href="{{ route('events.index') }}" class="block p-2 hover:text-blue-400 hover:scale-105 transition-all">EVENTOS</a>
             <a href="{{ route('news.index') }}" class="block p-2 hover:text-blue-400 hover:scale-105 transition-all">NOTÍCIAS</a>
-            <a href="" class="block p-2 hover:text-blue-400 hover:scale-105 transition-all">SOBRE</a>
+            <a href="{{ route('about') }}" class="block p-2 hover:text-blue-400 hover:scale-105 transition-all">SOBRE</a>
         </nav>
     </div>
 </header>
