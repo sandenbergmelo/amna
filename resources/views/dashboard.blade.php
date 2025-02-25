@@ -32,12 +32,12 @@
         </section>
         <section>
             <div class="flex flex-col py-4 lg:w-amna-content-lg md:w-amna-app-content-md">
+                @session('success')
+                    <p class="text-green-400 py-4">{{ session('success') }}</p>
+                @endsession
                 <details class="w-full">
                     <summary class="text-3xl lg:text-4xl font-bold text-[#010360] cursor-pointer">Eventos que você está
                         inscrito</summary>
-                    @session('success')
-                        <p class="text-green-400 py-4">{{ session('success') }}</p>
-                    @endsession
                     @if ($user->eventRegistrations->isEmpty())
                         <p>Você não está inscrito em nenhum evento</p>
                     @endif
@@ -87,14 +87,14 @@
         @if ($user->isAdmin())
             <section>
                 <div class="flex flex-col py-4 lg:w-amna-content-lg md:w-amna-app-content-md">
+                    @error('create_news')
+                        <p>{{ $message }}</p>
+                    @enderror
+                    @error('edit_news')
+                        <p>{{ $message }}</p>
+                    @enderror
                     <details class="w-full">
                         <summary class="text-3xl lg:text-4xl font-bold text-[#010360] cursor-pointer">Notícias</summary>
-                        @error('create_news')
-                            <p>{{ $message }}</p>
-                        @enderror
-                        @error('edit_news')
-                            <p>{{ $message }}</p>
-                        @enderror
                         <div class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg border-2 border-gray-300">
                             <div class="text-black w-full">
                                 <header class="mb-4">
@@ -136,14 +136,14 @@
             </section>
             <section>
                 <div class="flex flex-col py-4 lg:w-amna-content-lg md:w-amna-app-content-md">
+                    @error('create_event')
+                        <p>{{ $message }}</p>
+                    @enderror
+                    @error('edit_event')
+                        <p>{{ $message }}</p>
+                    @enderror
                     <details class="w-full">
                         <summary class="text-3xl lg:text-4xl font-bold text-[#010360] cursor-pointer">Eventos</summary>
-                        @error('create_event')
-                            <p>{{ $message }}</p>
-                        @enderror
-                        @error('edit_event')
-                            <p>{{ $message }}</p>
-                        @enderror
                         <div class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg border-2 border-gray-300">
                             <div class="text-black w-full">
                                 <header class="mb-4">
