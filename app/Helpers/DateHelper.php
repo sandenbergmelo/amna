@@ -12,11 +12,11 @@ class DateHelper
      */
     public static function formatDateTime($dateTime)
     {
-        if (empty($date)) {
+        if (empty($dateTime)) {
             return null;
         }
 
-        return date('d/m/Y \à\s H:i', strtotime($date));
+        return date('d/m/Y \à\s H:i', strtotime($dateTime));
     }
 
     public static function formatDate($date)
