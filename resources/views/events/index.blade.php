@@ -36,7 +36,7 @@
                                     <img class="pe-4" src="{{ asset($event->image_path) }}" alt="{{ $event->title }}">
                                 @endif
                             </div>
-                            <div class="m-2">
+                            <div class="">
                                 <h4>Início: {{ \App\Helpers\DateHelper::formatDate($event->start_date) }}</h4>
                                 <h4>Fim: {{ \App\Helpers\DateHelper::formatDate($event->end_date) }}</h4>
                             </div>

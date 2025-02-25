@@ -39,11 +39,11 @@
                     <summary class="text-3xl lg:text-4xl font-bold text-[#010360] cursor-pointer">Eventos que você está
                         inscrito</summary>
                     @if ($user->eventRegistrations->isEmpty())
-                        <p>Você não está inscrito em nenhum evento</p>
+                        <p class="py-4 text-red-500">Você não está inscrito em nenhum evento.</p>
                     @endif
                     @foreach ($user->eventRegistrations as $event)
                         <section
-                            class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300"
+                            class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300 cursor-pointer"
                             style="font-size: 1.2em;">
                             <h3 class="text-lg font-bold">{{ $event->title }}</h3>
                             <a href="{{ route('events.show', ['event' => $event]) }}"
@@ -63,7 +63,7 @@
                                     <div class="w-full flex justify-start">
                                         <input type="hidden" name="status_presence" value="Confirmed">
                                         <button
-                                            class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300"
+                                            class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer"
                                             type="submit">Confirmar presença</button>
                                     </div>
                                 </form>
@@ -76,7 +76,7 @@
                                     <div class="w-full flex justify-start">
                                         <input type="hidden" name="status_presence" value="Pending">
                                         <button
-                                            class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300"
+                                            class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer"
                                             type="submit">Cancelar presença</button>
                                     </div>
                                 </form>
@@ -103,19 +103,16 @@
                                     <h2 class="text-lg font-bold">Criar nova notícia</h2>
                                     <p class="pt-1">Para criar uma nova notícia basta clicar no botão abaixo.</p>
                                 </header>
-                                <a class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-2 px-3 my-4 border rounded transition duration-300"
+                                <a class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-2 px-3 my-4 border rounded transition duration-300 cursor-pointer"
                                     href="{{ route('news.create') }}">Criar Notícia</a>
                             </div>
                         </div>
                         <section>
                             @foreach ($user->news as $newsItem)
                                 <section
-                                    class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300"
+                                    class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300 cursor-pointer"
                                     style="font-size: 1.2em;">
                                     <h3 class="text-lg font-bold">{{ $newsItem->title }}</h3>
-                                    <a href="{{ route('news.show', ['news' => $newsItem]) }}"
-                                        class="text-blue-500 underline">Abrir
-                                        notícia</a>
                                     <p class="py-2">Postado por: {{ $newsItem->author->name }}</p>
                                     <p>Data de criação:
                                         {{ \App\Helpers\DateHelper::formatDateTime($newsItem->created_at) }}</p>
@@ -125,10 +122,13 @@
                                             style="max-width: 300px;">
                                     @endif
                                     <p class="py-2">{{ $newsItem->description }}</p>
+                                    <a href="{{ route('news.show', ['news' => $newsItem]) }}"
+                                        class="text-blue-500 underline">Abrir
+                                        notícia</a>
                                     <div class="w-full flex justify-start">
-                                        <a class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 me-4 border rounded transition duration-300"
+                                        <a class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 me-4 border rounded transition duration-300 cursor-pointer"
                                             href="{{ route('news.edit', ['news' => $newsItem]) }}">Editar</a>
-                                        <a class="bg-red-700 hover:bg-red-600 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300"
+                                        <a class="bg-red-700 hover:bg-red-600 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer"
                                             href="{{ route('news.delete', ['news' => $newsItem->id]) }}">Deletar</a>
                                     </div>
                                 </section>
@@ -155,28 +155,28 @@
                                     <h2 class="text-lg font-bold">Criar novo evento</h2>
                                     <p class="pt-1">Para criar uma novo evento basta clicar no botão abaixo.</p>
                                 </header>
-                                <a class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-2 px-3 my-4 border rounded transition duration-300"
+                                <a class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-2 px-3 my-4 border rounded transition duration-300 cursor-pointer"
                                     href="{{ route('events.create') }}">Criar evento</a>
                             </div>
                         </div>
                         <section>
                             @foreach ($events as $event)
                                 <section
-                                    class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300"
+                                    class="bg-white flex flex-col my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300 cursor-pointer"
                                     style="font-size: 1.2em;">
                                     <h3 class="text-lg font-bold">{{ $event->title }}</h3>
-                                    <a href="{{ route('events.show', ['event' => $event]) }}"
-                                        class="text-blue-400 hover:text-blue-300 underline transition">Abrir evento</a>
-                                    <div class="m-2">
+                                    <div class="pt-2">
                                         <h4>Início: {{ \App\Helpers\DateHelper::formatDate($event->start_date) }}</h4>
                                         <h4>Fim: {{ \App\Helpers\DateHelper::formatDate($event->end_date) }}</h4>
                                     </div>
-                                    <p class="py-2">Local: {{ $event->location }}</p>
+                                    <p class="pt-1">Local: {{ $event->location }}</p>
                                     @if ($event->image_path)
                                         <img src="{{ asset($event->image_path) }}" alt="{{ $event->title }}"
                                             style="max-width: 300px;">
                                     @endif
                                     <p class="py-2">{{ $event->description }}</p>
+                                    <a href="{{ route('events.show', ['event' => $event]) }}"
+                                        class="text-blue-400 hover:text-blue-300 underline transition">Abrir evento</a>
                                     <div class="w-full flex justify-start ">
                                         <a class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 me-4 border rounded transition duration-300"
                                             href="{{ route('events.edit', ['event' => $event]) }}">Editar</a>
