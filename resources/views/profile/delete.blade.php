@@ -22,14 +22,14 @@
                     </a>
                 </div>
                 <div class="w-full h-8 flex justify-start items-start px-7 my-6 text-lg">
-                    <p>Deletar usuário</p>
+                    <p>Deletar conta</p>
                 </div>
                 <div class="w-full px-7">
                     <form class="flex justify-start items-start flex-col" action="{{ route('users.destroy', $user) }}" method="post" method="post">
                         @csrf
                         @method('delete')
                         <div> 
-                            <p>Tem certeza que deseja deletar o usuário <span class="font-bold">{{ $user->name }}?</span></p>
+                            <p>Tem certeza que deseja deletar a conta <span class="font-bold">{{ $user->name }}?</span></p>
                             <p>Essa ação não poderá ser desfeita.</p>
                         </div>
                         <div class="w-full flex justify-start flex-col">

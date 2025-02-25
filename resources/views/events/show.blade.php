@@ -50,6 +50,12 @@
                                         <a class="text-blue-600 hover:text-blue-400 font-semibold underline transition"
                                             href="{{ route('event-registration.create', ['event' => $event]) }}">📢 Participar</a>
                                     @endif
+                                    
+                                @endif
+                                @if (!auth()->check())
+
+                                    <a class="text-blue-400 hover:text-blue-300 underline transition"
+                                        href="{{ route('login') }}">🔗Faça login para participar</a>
                                 @endif
                             </footer>
                         </div>

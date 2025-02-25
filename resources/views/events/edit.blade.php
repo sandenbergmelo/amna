@@ -22,7 +22,7 @@
                     </a>
                 </div>
                 <div class="w-full h-8 flex justify-start items-start px-7 my-6 text-lg">
-                    <p>Criar evento</p>
+                    <p>Editar evento</p>
                 </div>
                 <div class="w-full px-7">
                     <form class="flex justify-start items-start flex-col" action="{{ route('events.update', ['event' => $event]) }}" method="POST" enctype="multipart/form-data">

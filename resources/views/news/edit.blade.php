@@ -22,7 +22,7 @@
                     </a>
                 </div>
                 <div class="w-full h-8 flex justify-start items-start px-7 my-6 text-lg">
-                    <p>Editar Criar</p>
+                    <p>Editar notícia</p>
                 </div>
                 <div class="w-full px-7">
                     <form class="flex justify-start items-start flex-col" action="{{ route('news.update', $news->id) }}" method="post" enctype="multipart/form-data">
