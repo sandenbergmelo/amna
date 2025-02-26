@@ -37,14 +37,6 @@ class EventRegistrationController
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
@@ -62,13 +54,5 @@ class EventRegistrationController
         ]);
 
         return redirect()->route('dashboard')->with('success', 'Presença atualizada com sucesso!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
     }
 }

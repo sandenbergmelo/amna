@@ -17,6 +17,16 @@
     const slides = document.querySelectorAll('.carousel-item');
     let slideInterval;
 
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') {
+            prevSlide()
+        } else if (e.key === 'ArrowRight') {
+            nextSlide()
+        }
+    });
+
+
+
     function showSlide(index) {
         slides.forEach((slide, i) => {
             slide.classList.toggle('active', i === index);
