@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,17 +12,12 @@
 </head>
 
 <body class="w-full h-full flex justify-center items-center flex-col">
-    <main class="lg:w-amna-app md:w-w-amna-app-content-md min-h-[50rem] text-black flex justify-start items-center flex-col md:justify-center mt-4 md:mt-0">
-        <div class="py-4 w-full md:w-[25rem] md:shadow-2xl rounded-md transition-all duration-200">
+    <x-header />
+    <main class="lg:w-amna-app md:w-w-amna-app-content-md min-h-[50rem] text-black flex justify-start items-center flex-col md:justify-start mt-4 md:mt-0">
+        <div class="m-4 py-4 w-full md:w-[25rem] md:shadow-2xl rounded-md transition-all duration-200">
             <div class="h-full w-full">
-                <div>
-                    <a class="text-7xl font-serif w-full flex justify-start items-center bg-white text-black px-7" href="{{ route('home') }}">
-                        <img class="h-20" src="{{ asset('logos/logo.png') }}" alt="Logo da associação">
-                        AMNA
-                    </a>
-                </div>
-                <div class="w-full h-8 px-7 my-6 text-lg flex justify-start items-start">
-                    <h1>Se registrar no evento</h1>
+                <div class="w-full h-8 px-7 my-6 text-lg flex justify-center items-start">
+                    <h2>Se registrar no evento</h2>
                 </div>
                 <div class="px-7 w-full">
 
@@ -70,10 +65,12 @@
                                 });
                             });
                         </script>
-                    </form>  
+                    </form> 
+                </div> 
             </div>
         </div>
     </main>
+    <x-footer />
 </body>
 </html>
 

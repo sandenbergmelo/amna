@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>AMNA</title>
+    <title>Eventos</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -26,34 +26,21 @@
                 <section
                     class="bg-white flex my-4 p-8 rounded-lg shadow-lg transition-all duration-200 hover:bg-gray-200 hover:scale-105 border-2 border-gray-300"
                     style="font-size: 1.2em;">
-                    <div>
-                        <header>
-                            <h2 class="text-lg font-bold">{{ $event->title ?? 'Evento Sem Título' }}</h2>
-                            <a href="{{ route('events.show', ['event' => $event]) }}"
-                                class="text-blue-400 hover:text-blue-300 underline transition">Abrir evento</a>
-                            <div>
-                                @if ($event->image_path)
-                                    <img class="pe-4" src="{{ asset($event->image_path) }}" alt="{{ $event->title }}">
-                                @endif
-                            </div>
-                            <div class="m-2">
-                                <h4>Início: {{ \App\Helpers\DateHelper::formatDate($event->start_date) }}</h4>
-                                <h4>Fim: {{ \App\Helpers\DateHelper::formatDate($event->end_date) }}</h4>
+                    <div class="flex flex-col">
+                        <header>   
+                            <h2 class="text-lg font-bold pb-2">{{ $event->title ?? 'Evento Sem Título' }}</h2>
+                            <div class="pb-2">
+                                <h4>📅 <strong>Início</strong>: {{ \App\Helpers\DateHelper::formatDate($event->start_date) }}</h4>
+                                <h4>📅 <strong>Fim</strong>: {{ \App\Helpers\DateHelper::formatDate($event->end_date) }}</h4>
+                                <h4>⏰ <strong>Horário:</strong> {{ \Carbon\Carbon::parse($event->start_time)->format('H:i') }} -
+                                    {{ \Carbon\Carbon::parse($event->end_time)->format('H:i') }}
+                                </h4>
                             </div>
                             <p>{{ $event->description ?? 'Sem descrição disponível.' }}</p>
                         </header>
-                        <footer class="mt-3">
-                            @if (auth()->check())
-                                @if ($event->isUserSubscribed(auth()->user()))
-                                    <p class="cursor-default"><strong>Já inscrito</strong></p>
-                                @else
-                                    <a class="text-blue-400 hover:text-blue-300 underline transition"
-                                        href="{{ route('event-registration.create', ['event' => $event]) }}">Participar</a>
-                                @endif
-                            @else
-                                <a class="text-blue-400 hover:text-blue-300 underline transition"
-                                    href="{{ route('login') }}">Faça login para participar</a>
-                            @endif
+                        <footer class="pt-2">
+                            <a href="{{ route('events.show', ['event' => $event]) }}"
+                                class="text-blue-400 hover:text-blue-300 underline transition">🔗 Abrir evento</a>
                         </footer>
                     </div>
                 </section>

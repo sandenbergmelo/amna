@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
     @endif
 </head>
 <body class="w-full h-full flex justify-center items-center flex-col bg-gray-100">
-    <x-profile.header/>
+    <x-header/>
     <main class="lg:w-amna-app w-full h-full text-black flex justify-center items-center flex-col px-5">
         <div class="min-h-[50rem] flex flex-col py-4 lg:w-amna-content-lg md:w-amna-app-content-md">
             <h2 class="text-3xl lg:text-4xl font-bold text-[#010360] ">Seu Perfil</h2>
@@ -52,7 +52,7 @@
                             <input class="text-black text-center font-semibold py-2 transition duration-300 cursor-pointer" type="file" name="profile_photo" id="profile_photo" accept="image/*" size="" required>
                         </div>
                         <div class="w-full flex justify-start">
-                            <input class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300" type="submit" value="Trocar">
+                            <input class="bg-amna-terciary-600 hover:bg-amna-terciary-500 text-white text-center font-semibold py-1 px-3 my-4 border rounded transition duration-300 cursor-pointer" type="submit" value="Trocar">
                         </div>
                     </form> 
                 </div>
@@ -70,5 +70,6 @@
             </div>  
         </div>
     </main>
+    <x-footer />
 </body>
 </html>
